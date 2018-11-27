@@ -12,6 +12,7 @@
 		2657E20A21A3456B00DFB872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2657E20921A3456B00DFB872 /* Assets.xcassets */; };
 		2657E20D21A3456B00DFB872 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2657E20B21A3456B00DFB872 /* LaunchScreen.storyboard */; };
 		26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ABAC0D21A43D4300C4E8C3 /* TableViewController.swift */; };
+		26ABAC1621AC84EC00C4E8C3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ABAC1521AC84EC00C4E8C3 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,15 +33,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2657E1FF21A3456900DFB872 /* Test191118.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Test191118.app; path = "/Users/Sarah/Desktop/Test191118/build/Debug-iphoneos/Test191118.app"; sourceTree = "<absolute>"; };
 		2657E20221A3456900DFB872 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2657E20721A3456900DFB872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2657E20921A3456B00DFB872 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2657E20C21A3456B00DFB872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2657E20E21A3456B00DFB872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2657E21321A3456B00DFB872 /* Test191118Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Test191118Tests.xctest; path = "/Users/Sarah/Desktop/Test191118/build/Debug-iphoneos/Test191118Tests.xctest"; sourceTree = "<absolute>"; };
-		2657E21E21A3456B00DFB872 /* Test191118UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Test191118UITests.xctest; path = "/Users/Sarah/Desktop/Test191118/build/Debug-iphoneos/Test191118UITests.xctest"; sourceTree = "<absolute>"; };
 		26ABAC0D21A43D4300C4E8C3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		26ABAC1221A46D2800C4E8C3 /* Test191118.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test191118.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		26ABAC1321A46D2800C4E8C3 /* Test191118Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		26ABAC1421A46D2800C4E8C3 /* Test191118UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		26ABAC1521AC84EC00C4E8C3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,9 @@
 			isa = PBXGroup;
 			children = (
 				2657E20121A3456900DFB872 /* Test191118 */,
+				26ABAC1221A46D2800C4E8C3 /* Test191118.app */,
+				26ABAC1321A46D2800C4E8C3 /* Test191118Tests.xctest */,
+				26ABAC1421A46D2800C4E8C3 /* Test191118UITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +86,7 @@
 				2657E20221A3456900DFB872 /* AppDelegate.swift */,
 				26ABAC0D21A43D4300C4E8C3 /* TableViewController.swift */,
 				2657E20621A3456900DFB872 /* Main.storyboard */,
+				26ABAC1521AC84EC00C4E8C3 /* SettingsTableViewController.swift */,
 				2657E20921A3456B00DFB872 /* Assets.xcassets */,
 				2657E20B21A3456B00DFB872 /* LaunchScreen.storyboard */,
 				2657E20E21A3456B00DFB872 /* Info.plist */,
@@ -105,7 +111,7 @@
 			);
 			name = Test191118;
 			productName = Test191118;
-			productReference = 2657E1FF21A3456900DFB872 /* Test191118.app */;
+			productReference = 26ABAC1221A46D2800C4E8C3 /* Test191118.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2657E21221A3456B00DFB872 /* Test191118Tests */ = {
@@ -123,7 +129,7 @@
 			);
 			name = Test191118Tests;
 			productName = Test191118Tests;
-			productReference = 2657E21321A3456B00DFB872 /* Test191118Tests.xctest */;
+			productReference = 26ABAC1321A46D2800C4E8C3 /* Test191118Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		2657E21D21A3456B00DFB872 /* Test191118UITests */ = {
@@ -141,7 +147,7 @@
 			);
 			name = Test191118UITests;
 			productName = Test191118UITests;
-			productReference = 2657E21E21A3456B00DFB872 /* Test191118UITests.xctest */;
+			productReference = 26ABAC1421A46D2800C4E8C3 /* Test191118UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -221,6 +227,7 @@
 			files = (
 				2657E20321A3456900DFB872 /* AppDelegate.swift in Sources */,
 				26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */,
+				26ABAC1621AC84EC00C4E8C3 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
