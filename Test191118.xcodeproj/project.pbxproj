@@ -12,7 +12,7 @@
 		2657E20A21A3456B00DFB872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2657E20921A3456B00DFB872 /* Assets.xcassets */; };
 		2657E20D21A3456B00DFB872 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2657E20B21A3456B00DFB872 /* LaunchScreen.storyboard */; };
 		26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ABAC0D21A43D4300C4E8C3 /* TableViewController.swift */; };
-		AA5899E821AD4EE1000C6E1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5899E721AD4EE1000C6E1B /* ViewController.swift */; };
+		AA589A2621AD9D99000C6E1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA589A2521AD9D99000C6E1B /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 		AA5899E421AD4D8F000C6E1B /* Test191118.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test191118.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5899E521AD4D8F000C6E1B /* Test191118Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5899E621AD4D8F000C6E1B /* Test191118UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA5899E721AD4EE1000C6E1B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../Scraper_Test/WkwebviewTest/WkwebviewTest/ViewController.swift; sourceTree = "<group>"; };
+		AA589A2521AD9D99000C6E1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,13 +83,13 @@
 		2657E20121A3456900DFB872 /* Test191118 */ = {
 			isa = PBXGroup;
 			children = (
-				AA5899E721AD4EE1000C6E1B /* ViewController.swift */,
 				2657E20221A3456900DFB872 /* AppDelegate.swift */,
 				26ABAC0D21A43D4300C4E8C3 /* TableViewController.swift */,
 				2657E20621A3456900DFB872 /* Main.storyboard */,
 				2657E20921A3456B00DFB872 /* Assets.xcassets */,
 				2657E20B21A3456B00DFB872 /* LaunchScreen.storyboard */,
 				2657E20E21A3456B00DFB872 /* Info.plist */,
+				AA589A2521AD9D99000C6E1B /* ViewController.swift */,
 			);
 			path = Test191118;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA5899E821AD4EE1000C6E1B /* ViewController.swift in Sources */,
+				AA589A2621AD9D99000C6E1B /* ViewController.swift in Sources */,
 				2657E20321A3456900DFB872 /* AppDelegate.swift in Sources */,
 				26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */,
 			);
