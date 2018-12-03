@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pqx-4G-rx5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pqx-4G-rx5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Dashboard-->
         <scene sceneID="kx4-iq-OGf">
             <objects>
                 <tableViewController id="mNd-vm-ZdS" customClass="TableViewController" customModule="Test191118" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,28 +58,12 @@
                             <outlet property="delegate" destination="mNd-vm-ZdS" id="QHV-Wc-Zw5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="YQQ-QP-Skh">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="nyv-kD-y2V">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Few-iD-MCv">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                                <connections>
-                                    <segue destination="HK7-JR-y3T" kind="show" id="9MP-Cq-o7x"/>
-                                </connections>
-                            </button>
+                    <navigationItem key="navigationItem" title="Dashboard" id="YQQ-QP-Skh">
+                        <barButtonItem key="leftBarButtonItem" title="Einstellungen" image="ic_settings" id="nyv-kD-y2V">
                             <connections>
-                                <action selector="Settings:" destination="mNd-vm-ZdS" id="fYt-hg-J14"/>
+                                <segue destination="HK7-JR-y3T" kind="show" id="CBS-53-7DB"/>
                             </connections>
                         </barButtonItem>
-                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dashboard" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="ilP-zv-E7K">
-                            <rect key="frame" x="141.5" y="7" width="92" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ND7-yg-oKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,4 +214,7 @@
             <point key="canvasLocation" x="-1602.4000000000001" y="-502.39880059970017"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_settings" width="36" height="36"/>
+    </resources>
 </document>
