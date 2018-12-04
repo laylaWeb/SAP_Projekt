@@ -7,25 +7,44 @@
 //
 
 import UIKit
+import WebKit
 
-
-class TableViewController: UITableViewController {
-    
+class TableViewController: UITableViewController, WKUIDelegate {
     
     let headlines = ["Apple Services","Amazon Web Services"]
     
     let status = [["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"],
                   ["Asia Pacific", "Europe", "North America", "South America" ]]
     
-    
+    var webView: WKWebView!
     
     @IBAction func Settings(_ sender: UIBarButtonItem) {
 
     }
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let myURL = URL(string:"https://www.apple.com/support/systemstatus/")
+        let myRequest = URLRequest(url: myURL!)
+        webView.load(myRequest)
         
+        //...
+        //class WKNavigation : NSObject
+        
+        optional func webView(_ webView: WKWebView,
+                              didFinish navigation: WKNavigation!)
+        
+        webView.evaluateJavaScript("document.documentElement.innerHTML.toString()",
+                                   completionHandler: { (html: Any, error: Error?) in
+                                    print(html)
+        })
     }
 
     // MARK: - Table view data source
@@ -51,7 +70,4 @@ class TableViewController: UITableViewController {
 
         return cell
     }
-    
-    
-
 }
