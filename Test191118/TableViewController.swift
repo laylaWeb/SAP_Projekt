@@ -1,3 +1,4 @@
+
 //
 //  TableViewController.swift
 //  Test191118
@@ -11,29 +12,31 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    let headlines = ["Apple Service","Amazon Web Service"]
     
-    let headlines = ["Apple Services","Amazon Web Services"]
+    //    let status = [["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"],
+    //                  ["Asia Pacific", "Europe", "North America", "South America" ]]
+    var services: [Service] = []
     
-    let status = [["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"],
-                  ["Asia Pacific", "Europe", "North America", "South America" ]]
+    var appleServicesParser: Parser!
     
     
-    
-    @IBAction func Settings(_ sender: UIBarButtonItem) {
-
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) { [weak self] services in
+            self?.services = services
+            self?.tableView.reloadData()
+        }
+        appleServicesParser.parse()
     }
-
+    
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return status.count
-    }
+    
+    //    override func numberOfSections(in tableView: UITableView) -> Int {
+    //        // #warning Incomplete implementation, return the number of sections
+    //        return headlines.count
+    //    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return headlines[section]
@@ -41,17 +44,17 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return status[section].count
+        return services.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
-
-        cell.textLabel?.text = status[indexPath.section][indexPath.row]
-
+        let service = services[indexPath.row]
+        cell.textLabel?.text = service.name
+        cell.detailTextLabel?.text = service.status
         return cell
     }
     
     
-
+    
 }
