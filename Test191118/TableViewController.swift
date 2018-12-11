@@ -12,10 +12,9 @@ import UIKit
 class TableViewController: UITableViewController {
     
     
-    let headlines = ["Apple Services","Amazon Web Services"]
+    let headlines = ["Amazon Web Services", "Apple Services"]
     
-    let status = [["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"],
-                  ["Asia Pacific", "Europe", "North America", "South America" ]]
+    let status = [["Einzeiler"], ["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
