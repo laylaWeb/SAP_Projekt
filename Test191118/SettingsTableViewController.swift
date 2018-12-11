@@ -10,8 +10,8 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
-    let headlines2 = ["Receive Detailed Status Report", "Show Regions", "Add & Manage Webservers"]
-    let status2 = [["When this is on, detailed Status Reports about the Servers will be shown. Problem Reports included."], ["Asia Pacific", "Europe", "North America", "South America"], [""]]
+    let headlines2 = ["", "Add & Manage Webservers"]
+    let status2 = [["When this is on, detailed Status Reports about the Servers will be shown. Problem Reports included."], [""]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InactiveServersLabelCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WebserverLabelCell", for: indexPath)
         
         cell.textLabel?.text = status2[indexPath.section][indexPath.row]
         
