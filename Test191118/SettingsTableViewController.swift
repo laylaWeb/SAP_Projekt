@@ -10,8 +10,8 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
-    let headlines2 = ["Show inactive servers only", "receive detailed status report", "show searchbar", "show regions", "add & manage webservers"]
-    let status2 = [[""], ["When this is on, detailed Status Reports about the Servers will be shown. Problem Reports included."], [], ["Asia Pacific", "Europe", "North America", "South America"], [""]]
+    let headlines2 = ["", "Add & Manage Webservers"]
+    let status2 = [["When this is on, detailed Status Reports about the Servers will be shown. Problem Reports included."], [""]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +40,35 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InactiveServersLabelCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WebserverLabelCell", for: indexPath)
         
         cell.textLabel?.text = status2[indexPath.section][indexPath.row]
         
         return cell
     }
+    
+    //override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    //{
+        //return 40.0;//Choose your custom row height
+    //    if indexPath.section == StatusReportLabelCell {
+    //        return 60
+    //    } else {
+    //        return UITableView.automaticDimension
+    //    }
+    //}
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
+        if indexPath.section == 1
+        {
+            if indexPath.row == 1
+            {
+                return 30.0
+            }
+        }
+        
+        return 200.0
+    }
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
