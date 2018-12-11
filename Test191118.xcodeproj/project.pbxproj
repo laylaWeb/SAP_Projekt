@@ -13,7 +13,7 @@
 		2657E20D21A3456B00DFB872 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2657E20B21A3456B00DFB872 /* LaunchScreen.storyboard */; };
 		26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ABAC0D21A43D4300C4E8C3 /* TableViewController.swift */; };
 		26ABAC1621AC84EC00C4E8C3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ABAC1521AC84EC00C4E8C3 /* SettingsTableViewController.swift */; };
-		AA26250B21B6AED1000D4966 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA26250A21B6AED1000D4966 /* Parser.swift */; };
+		AAB5D72421BFF6FB006F66FD /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5D72321BFF6FB006F66FD /* Parser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,7 @@
 		26ABAC1321A46D2800C4E8C3 /* Test191118Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26ABAC1421A46D2800C4E8C3 /* Test191118UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26ABAC1521AC84EC00C4E8C3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		AA26250A21B6AED1000D4966 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		AAB5D72321BFF6FB006F66FD /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +75,7 @@
 		2657E1F621A3456900DFB872 = {
 			isa = PBXGroup;
 			children = (
+				AAB5D72321BFF6FB006F66FD /* Parser.swift */,
 				2657E20121A3456900DFB872 /* Test191118 */,
 				26ABAC1221A46D2800C4E8C3 /* Test191118.app */,
 				26ABAC1321A46D2800C4E8C3 /* Test191118Tests.xctest */,
@@ -228,7 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA26250B21B6AED1000D4966 /* Parser.swift in Sources */,
+				AAB5D72421BFF6FB006F66FD /* Parser.swift in Sources */,
 				2657E20321A3456900DFB872 /* AppDelegate.swift in Sources */,
 				26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */,
 				26ABAC1621AC84EC00C4E8C3 /* SettingsTableViewController.swift in Sources */,
@@ -407,7 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Test191118/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -426,7 +427,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Test191118/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
