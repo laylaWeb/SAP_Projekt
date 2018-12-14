@@ -37,7 +37,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellAWS", for: indexPath)
 
         cell.textLabel?.text = status[indexPath.section][indexPath.row]
 
