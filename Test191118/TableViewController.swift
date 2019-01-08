@@ -53,19 +53,19 @@ class TableViewController: UITableViewController {
         cell.detailTextLabel?.text = service.status //available
         
         
-        let imageName = "gruen.png"
-        cell.imageView?.image = UIImage(named: "gruen")
+//        let imageName = "gruen.png"
+//        cell.imageView?.image = UIImage(named: "gruen")
         
         
-//        if(services=="availabel"){
-//            let imageName = "gruen.png"
-//            cell.imageView?.image = UIImage(named: "gruen")
-//        }
-//
-//        else{
-//            let imageName = "rot.png"
-//            cell.imageView?.image = UIImage(named: "rot")
-//        }
+        if(cell.detailTextLabel?.text == "Available"){
+            let imageName = "gruen.png"
+            cell.imageView?.image = UIImage(named: "gruen")
+        }
+
+        else{
+            let imageName = "rot.png"
+            cell.imageView?.image = UIImage(named: "rot")
+        }
 
         return cell
         }
