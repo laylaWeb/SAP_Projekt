@@ -50,7 +50,23 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
         let service = services[indexPath.row]
         cell.textLabel?.text = service.name
-        cell.detailTextLabel?.text = service.status
+        cell.detailTextLabel?.text = service.status //available
+        
+        
+        let imageName = "gruen.png"
+        cell.imageView?.image = UIImage(named: "gruen")
+        
+        
+//        if(services=="availabel"){
+//            let imageName = "gruen.png"
+//            cell.imageView?.image = UIImage(named: "gruen")
+//        }
+//
+//        else{
+//            let imageName = "rot.png"
+//            cell.imageView?.image = UIImage(named: "rot")
+//        }
+
         return cell
         }
     
