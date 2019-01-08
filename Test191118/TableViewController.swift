@@ -11,7 +11,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let headlines = ["Amazon Web Service", "Apple Service"]
+    let headlines = ["Apple Service", "Amazon Web Service"]
     
     //    let status = [["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"],
     //                  ["Asia Pacific", "Europe", "North America", "South America" ]]
