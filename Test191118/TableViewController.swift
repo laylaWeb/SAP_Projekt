@@ -17,17 +17,13 @@ class TableViewController: UITableViewController {
     //                  ["Asia Pacific", "Europe", "North America", "South America" ]]
     var services: [Service] = []
     
-    var appleServicesParser: Parser!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) { [weak self] services in
-            self?.services = services
-            self?.tableView.reloadData()
-        }
-        appleServicesParser.parse()
+        let dummyData = DummyDataService()
+        services = dummyData.getServices()
+        
+        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source
