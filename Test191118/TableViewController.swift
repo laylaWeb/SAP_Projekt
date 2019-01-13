@@ -11,20 +11,26 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let headlines = ["Apple Service","Amazon Web Service"]
+    let headlines = ["Apple Service", "Amazon Web Service"]
     
     //    let status = [["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"],
     //                  ["Asia Pacific", "Europe", "North America", "South America" ]]
-    var services: [Service] = []
     
+    var appleServices: [Service] = []
+    var amazonServices: [Service] = [
+        Service(name: "Test 1", status: "Available"),
+        Service(name: "Test 2", status: "Unavailable"),
+        Service(name: "Test 3", status: "Available")
+    ]
     var appleServicesParser: Parser!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) { [weak self] services in
-            self?.services = services
+        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) {
+            [weak self] services in
+            self?.appleServices = services
             self?.tableView.reloadData()
         }
         appleServicesParser.parse()
@@ -32,10 +38,10 @@ class TableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        // #warning Incomplete implementation, return the number of sections
-    //        return headlines.count
-    //    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return headlines.count
+    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return headlines[section]
@@ -43,33 +49,35 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return services.count
+        if (section == 0) {
+            return appleServices.count
+        } else if (section == 1) {
+            return amazonServices.count
+        }
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
-        let service = services[indexPath.row]
-        cell.textLabel?.text = service.name
-        cell.detailTextLabel?.text = service.status //available
         
+        var service: Service?
+        if (indexPath.section == 0) {
+            service = appleServices[indexPath.row]
+        } else if (indexPath.section == 1) {
+            service = amazonServices[indexPath.row]
+        }
         
-//        let imageName = "gruen.png"
-//        cell.imageView?.image = UIImage(named: "gruen")
-        
+        cell.textLabel?.text = service!.name
+        cell.detailTextLabel?.text = service!.status //Available
         
         if(cell.detailTextLabel?.text == "Available"){
-            let imageName = "gruen.png"
             cell.imageView?.image = UIImage(named: "gruen")
         }
-
         else{
-            let imageName = "rot.png"
             cell.imageView?.image = UIImage(named: "rot")
         }
 
         return cell
-        }
-    
-    
+    }
     
 }

@@ -74,9 +74,12 @@ class Parser: NSObject, WKNavigationDelegate {
     func filterServices (unfiltered : [Service]) -> [Service] {
         return unfiltered.filter {
             service in
-            service.name.lowercased() == "app store" || service.name == "Mac App Store" || service.name == "Volume Purchase Program"
-                || service.name == "iOS Device Activation" || service.name == "Device Enrollment Program" || service.name == "macOS Software Update" || service.name == "macOS Software Update"
-            
+                service.name == "App Store" ||
+                service.name == "Mac App Store" ||
+                service.name == "Volume Purchase Program" ||
+                service.name == "iOS Device Activation" ||
+                service.name == "Device Enrollment Program" ||
+                service.name == "macOS Software Update"
         }
     }
     
