@@ -11,19 +11,17 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let headlines = ["Apple Service", "Amazon Web Service"]
-    
-    //    let status = [["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"],
-    //                  ["Asia Pacific", "Europe", "North America", "South America" ]]
+    let headlines = ["Apple Services", "Amazon Web Services"]
     var services: [Service] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dummyData = DummyDataService()
-        services = dummyData.getServices()
-        
-        self.tableView.reloadData()
+        let dummyData = AWSDataService()
+        dummyData.getServices(callbackHandler: { [weak self] services in
+            self?.services = services
+            self?.tableView.reloadData()
+        })
     }
     
     // MARK: - Table view data source

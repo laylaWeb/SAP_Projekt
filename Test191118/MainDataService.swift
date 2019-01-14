@@ -9,5 +9,5 @@
 import Foundation
 
 protocol MainDataService {
-    func getServices() -> [Service]
+    func getServices(callbackHandler: @escaping ([Service]) -> Void)
 }

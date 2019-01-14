@@ -11,14 +11,14 @@ import Foundation
 
 struct DummyDataService: MainDataService {
     
-    
-    func getServices() -> [Service] {
-        var list: [Service] = [
-            Service(name:"service1", status:"not available"),
-            Service(name:"service2", status:"not available"),
-            Service(name:"service3", status:"available"),
-            Service(name:"service4", status:"available"),
-            Service(name:"service5", status:"not available")]
-        return list
+    func getServices(callbackHandler: @escaping ([Service]) -> Void) {
+        callbackHandler([
+            Service(name:"No recent events.", status:""),
+            Service(name:"App Store", status:"not available"),
+            Service(name:"Device Enrollment Program", status:"available"),
+            Service(name:"iOS Device Activation", status:"available"),
+            Service(name:"Mac App Store", status:"available"),
+            Service(name:"macOS Software Update", status:"available"),
+            Service(name:"Volume Purchase Program", status:"available")])
     }
 }
