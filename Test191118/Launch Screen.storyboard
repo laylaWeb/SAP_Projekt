@@ -17,12 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wolke" translatesAutoresizingMaskIntoConstraints="NO" id="ILm-Js-lfC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wolke" translatesAutoresizingMaskIntoConstraints="NO" id="ILm-Js-lfC">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ILm-Js-lfC" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="8Es-RE-KnN"/>
+                            <constraint firstItem="ILm-Js-lfC" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="Qt8-ie-lSI"/>
+                            <constraint firstItem="ILm-Js-lfC" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" id="eYU-wg-NAQ"/>
+                            <constraint firstItem="ILm-Js-lfC" firstAttribute="bottom" secondItem="Bcu-3y-fUS" secondAttribute="bottom" id="sot-Gj-yDb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
                 </viewController>
@@ -32,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="wolke" width="259.20001220703125" height="460.79998779296875"/>
+        <image name="wolke" width="1242" height="2208"/>
     </resources>
 </document>
