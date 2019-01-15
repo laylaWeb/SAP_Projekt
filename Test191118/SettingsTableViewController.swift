@@ -8,13 +8,19 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var settingTableView: UITableView!
+    @IBAction func inactiveServer(_ sender: Any) {
+    }
     
-    let headlines2 = ["", "Add & Manage Webservers", "Receive Notification When Service Is Inactive", "Apply Filter"]
-    let status2 = [["When this is on, detailed Status Reports about the Servers will be shown. Problem Reports included."], [""], [""], [""]]
+    let headlines2 = ["Add & Manage Webservers", "Apply Filter"]
+    let status2 = [[""], [""]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        settingTableView.dataSource = self
+        settingTableView.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,21 +31,21 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return status2.count
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return headlines2[section]
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return status2[section].count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WebserverLabelCell", for: indexPath)
         
         cell.textLabel?.text = status2[indexPath.section][indexPath.row]
