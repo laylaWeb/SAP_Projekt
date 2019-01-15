@@ -10,8 +10,8 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
-    let headlines2 = ["", "Add & Manage Webservers"]
-    let status2 = [["When this is on, detailed Status Reports about the Servers will be shown. Problem Reports included."], [""]]
+    let headlines2 = ["", "Add & Manage Webservers", "Receive Notification When Service Is Inactive", "Apply Filter"]
+    let status2 = [["When this is on, detailed Status Reports about the Servers will be shown. Problem Reports included."], [""], [""], [""]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
