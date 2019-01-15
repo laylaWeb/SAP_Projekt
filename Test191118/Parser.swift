@@ -18,7 +18,7 @@ struct Service {
 class Parser: NSObject, WKNavigationDelegate {
     
     private let url: URL
-    private let webView: WKWebView
+    @objc private let webView: WKWebView
     private let callbackHandler: ([Service]) -> Void
     
     init(url: URL, callbackHandler: @escaping ([Service]) -> Void) {
@@ -34,17 +34,46 @@ class Parser: NSObject, WKNavigationDelegate {
         webView.load(myRequest)
     }
     
+    @objc
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         
         let parseFilterUpdateServices : ([String]) -> Void = { serviceStringArray in
             let services = self.findServices(inputArray : serviceStringArray)
             let filteredServices = self.filterServices(unfiltered: services)
             self.updateServicesInTableView(services: filteredServices)
+            self.checkingServicesEachMinutes()
+          
+           
+            
+    
         }
         
         self.getServiceStringArrayFromJS( handleResult: parseFilterUpdateServices)
         
+}
+    
+    @objc
+    func printCat()
+    {
+        let parseFilterUpdateServices : ([String]) -> Void = { serviceStringArray in
+            let services = self.findServices(inputArray : serviceStringArray)
+            let filteredServices = self.filterServices(unfiltered: services)
+            self.updateServicesInTableView(services: filteredServices)
+            self.checkingServicesEachMinutes()
+            
+            
+        }
+        
+        self.getServiceStringArrayFromJS( handleResult: parseFilterUpdateServices)
+        
+        
     }
+    
+    func checkingServicesEachMinutes()
+    {
+        _ = Timer.scheduledTimer(timeInterval: 900, target: self, selector: #selector (self.printCat), userInfo: nil, repeats: true)
+        
+   }
     
     func getServiceStringArrayFromJS( handleResult : @escaping ([String]) -> Void )  {
         webView.evaluateJavaScript("Array.from(document.getElementsByClassName('event')).map ( el => el.innerText )") {
@@ -66,6 +95,7 @@ class Parser: NSObject, WKNavigationDelegate {
             if let name = split.first, let status = split.last {
                 let service = Service(name: name, status: status)
                 services.append(service)
+               
             }
         }
         return services
@@ -79,6 +109,7 @@ class Parser: NSObject, WKNavigationDelegate {
             
         }
     }
+    
     
     func updateServicesInTableView( services : [Service]) {
         DispatchQueue.main.async {
