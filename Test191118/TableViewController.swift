@@ -24,7 +24,6 @@ class TableViewController: UITableViewController {
     ]
     var appleServicesParser: Parser!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +32,10 @@ class TableViewController: UITableViewController {
             self?.appleServices = services
             self?.tableView.reloadData()
         }
+        //allServices = awsServices + appleServices
         appleServicesParser.parse()
+        
+        
     }
     
     // MARK: - Table view data source
