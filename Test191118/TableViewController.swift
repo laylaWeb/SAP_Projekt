@@ -11,17 +11,23 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let headlines = ["Apple Services", "Amazon Web Services"]
-    var services: [Service] = []
+    let headlines = ["Amazon Web Services", "Apple Services"]
+    var allServices: [Service] = []
+    var awsServices: [Service] = []
+    var appleServices: [Service] = []
+    var appleServicesParser: Parser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dummyData = AWSDataService()
-        dummyData.getServices(callbackHandler: { [weak self] services in
-            self?.services = services
+        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) { [weak self] services in
+            self?.appleServices = services
             self?.tableView.reloadData()
-        })
+        }
+        //allServices = awsServices + appleServices
+        appleServicesParser.parse()
+        
+        
     }
     
     // MARK: - Table view data source
@@ -37,12 +43,12 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return services.count
+        return appleServices.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
-        let service = services[indexPath.row]
+        let service = appleServices[indexPath.row]
         cell.textLabel?.text = service.name
         cell.detailTextLabel?.text = service.status
         return cell

@@ -25,7 +25,12 @@ struct AWSDataService: MainDataService {
                     let rows = try doc.select("#EU_block > table:nth-child(1) > tbody > tr")
                     
                     if case try rows.first()?.children().get(1).text() = "No recent events." {
-                        callbackHandler([])
+                        var services: [Service] = []
+                        for element in rows.array() {
+                            let status = try element.children().get(1).text()
+                            services.append(Service(name:"Region Europe", status:status))
+                        }
+                        callbackHandler(services)
                     } else {
                         var services: [Service] = []
                         for element in rows.array() {
