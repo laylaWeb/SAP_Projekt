@@ -13,7 +13,6 @@ struct DummyDataService: MainDataService {
     
     func getServices(callbackHandler: @escaping ([Service]) -> Void) {
         callbackHandler([
-            Service(name:"No recent events.", status:""),
             Service(name:"App Store", status:"not available"),
             Service(name:"Device Enrollment Program", status:"available"),
             Service(name:"iOS Device Activation", status:"available"),
