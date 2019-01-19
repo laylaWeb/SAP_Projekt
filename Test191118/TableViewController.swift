@@ -23,6 +23,7 @@ class TableViewController: UITableViewController {
         
 //        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) { [weak self] services in
 //            self?.appleServices = services
+//            self?.tableView.reloadData()
 //
 //        }
 //        appleServicesParser.parse()
@@ -36,9 +37,9 @@ class TableViewController: UITableViewController {
         let dummyData = DummyDataService()
         dummyData.getServices(callbackHandler: { [weak self] services in
             self?.dummyServices = services
-            self?.tableView.reloadData()
+
         })
-        
+        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
