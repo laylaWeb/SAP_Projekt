@@ -11,11 +11,12 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let headlines = ["Apple Service", "Amazon Web Service"]
+    let headlines = ["services", "Apple Service", "Amazon Web Service"]
     
     //    let status = [["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"],
     //                  ["Asia Pacific", "Europe", "North America", "South America" ]]
     
+    var allServices: String = "all services operating normally"
     var appleServices: [Service] = []
     var amazonServices: [Service] = [
         Service(name: "Test 1", status: "Available"),
@@ -57,6 +58,7 @@ class TableViewController: UITableViewController {
             return amazonServices.count
         }
         return 0
+
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
