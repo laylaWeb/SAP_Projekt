@@ -7,39 +7,72 @@
 //
 
 import UIKit
+import PromiseKit
 
+enum AWSError : Error {
+    case NameIsEmpty
+}
 
 class TableViewController: UITableViewController {
     
     let headlines = ["Amazon Web Services", "Apple Services"]
-    var allServices: [Service] = []
     var awsServices: [Service] = []
     var appleServices: [Service] = []
     var dummyServices: [Service] = []
-    var appleServicesParser: Parser!
+    var appleServicesParser: AppleDataService!
+    var awsServicesParser: AWSDataService!
+    var dummyServicesParser: DummyDataService!
+    
+    func appleCompletion() -> Promise<[Service]> {
+        return Promise { seal in
+            
+            appleServicesParser = AppleDataService(callbackHandler: { services in
+                seal.resolve(services, nil)
+            })
+            
+            appleServicesParser.getServices()
+            
+        }
+    }
+    
+    func awsCompletion() -> Promise<[Service]> {
+        return Promise { seal in
+            
+            awsServicesParser = AWSDataService(callbackHandler: { services in
+                seal.resolve(services, nil)
+            })
+            
+            awsServicesParser.getServices()
+            
+        }
+    }
+    
+    func dummyCompletion() -> Promise<[Service]> {
+        return Promise { seal in
+            
+            dummyServicesParser = DummyDataService(callbackHandler: { services in
+                seal.resolve(services, nil)
+            })
+            
+            dummyServicesParser.getServices()
+            
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) { [weak self] services in
-//            self?.appleServices = services
-//            self?.tableView.reloadData()
-//
-//        }
-//        appleServicesParser.parse()
-
-        let awsData = AWSDataService()
-        awsData.getServices(callbackHandler: { [weak self] services in
-            self?.awsServices = services
-            self?.tableView.reloadData()
-        })
-
-        let dummyData = DummyDataService()
-        dummyData.getServices(callbackHandler: { [weak self] services in
-            self?.dummyServices = services
-
-        })
-        tableView.reloadData()
+        firstly {
+            when(fulfilled: dummyCompletion(), awsCompletion())
+        }.done { dummyServices, awsServices in
+            self.dummyServices = dummyServices
+            self.awsServices = awsServices
+        }.ensure {
+            self.tableView.reloadData()
+        }
+        
+        
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -52,23 +85,37 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.awsServices.count + self.dummyServices.count
+        // return the number of rows
+        if section == 0 {
+            return awsServices.count
+        } else if section == 1 {
+            return dummyServices.count
+        }
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("bla")
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
+        
+        var service: Service?
         if indexPath.section == 0 {
-            let awsservice = awsServices.popLast()
-            cell.textLabel?.text = awsservice?.name
-            cell.detailTextLabel?.text = awsservice?.status
+            service = awsServices[indexPath.row]
         }
         else if indexPath.section == 1 {
-            let dummyService = dummyServices.popLast()
-            cell.textLabel?.text = dummyService?.name
-            cell.detailTextLabel?.text = dummyService?.status
+            service = dummyServices[indexPath.row]
         }
+        
+        cell.textLabel?.text = service?.name
+        cell.detailTextLabel?.text = service?.status
+        
+        if(cell.detailTextLabel?.text == "Available") {
+            cell.imageView?.image = UIImage(named: "gruen")
+        }
+        else {
+            cell.imageView?.image = UIImage(named: "rot")
+        }
+        
         return cell
     }
     
