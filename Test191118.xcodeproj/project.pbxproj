@@ -17,8 +17,8 @@
 		D7F857C6DB311216E25E48C4 /* Pods_Test191118.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE939B51E4C4F9F93CE94E /* Pods_Test191118.framework */; };
 		E428962621E4E31E002E3D62 /* MainDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E428962521E4E31E002E3D62 /* MainDataService.swift */; };
 		E428962821E4E3B4002E3D62 /* AWSDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E428962721E4E3B4002E3D62 /* AWSDataService.swift */; };
-		E428962A21E4E800002E3D62 /* AppleDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E428962921E4E800002E3D62 /* AppleDataService.swift */; };
 		E428962C21E4FB23002E3D62 /* DummyDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E428962B21E4FB23002E3D62 /* DummyDataService.swift */; };
+		E49A493021F9FC9200435DE3 /* AppleDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A492F21F9FC9200435DE3 /* AppleDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +55,10 @@
 		C53D2387D016DC4BB58CCE5B /* Pods_Test191118Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test191118Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E428962521E4E31E002E3D62 /* MainDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataService.swift; sourceTree = "<group>"; };
 		E428962721E4E3B4002E3D62 /* AWSDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSDataService.swift; sourceTree = "<group>"; };
-		E428962921E4E800002E3D62 /* AppleDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleDataService.swift; sourceTree = "<group>"; };
 		E428962B21E4FB23002E3D62 /* DummyDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataService.swift; sourceTree = "<group>"; };
 		E43AB0C121E6A4680069712A /* Test191118Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43AB0C221E6A4680069712A /* Test191118UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49A492F21F9FC9200435DE3 /* AppleDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +111,8 @@
 				2657E20E21A3456B00DFB872 /* Info.plist */,
 				AA86DEEC21C018890025D6DB /* Parser.swift */,
 				E428962521E4E31E002E3D62 /* MainDataService.swift */,
+				E49A492F21F9FC9200435DE3 /* AppleDataService.swift */,
 				E428962721E4E3B4002E3D62 /* AWSDataService.swift */,
-				E428962921E4E800002E3D62 /* AppleDataService.swift */,
 				E428962B21E4FB23002E3D62 /* DummyDataService.swift */,
 			);
 			path = Test191118;
@@ -298,6 +298,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Test191118/Pods-Test191118-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -305,6 +306,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,8 +327,8 @@
 				AA86DEED21C018890025D6DB /* Parser.swift in Sources */,
 				2657E20321A3456900DFB872 /* AppDelegate.swift in Sources */,
 				26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */,
+				E49A493021F9FC9200435DE3 /* AppleDataService.swift in Sources */,
 				26ABAC1621AC84EC00C4E8C3 /* SettingsTableViewController.swift in Sources */,
-				E428962A21E4E800002E3D62 /* AppleDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,14 +503,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4B3XCNWC7Y;
 				INFOPLIST_FILE = Test191118/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Test191118;
+				PRODUCT_BUNDLE_IDENTIFIER = io.CloudServicWatcher.Test191118;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,14 +523,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4B3XCNWC7Y;
 				INFOPLIST_FILE = Test191118/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Test191118;
+				PRODUCT_BUNDLE_IDENTIFIER = io.CloudServicWatcher.Test191118;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

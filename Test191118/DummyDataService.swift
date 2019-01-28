@@ -10,10 +10,15 @@ import Foundation
 
 
 struct DummyDataService: MainDataService {
+
+    private let callbackHandler: ([Service]) -> Void
+
+    init(callbackHandler: @escaping ([Service]) -> Void) {
+        self.callbackHandler = callbackHandler
+    }
     
-    func getServices(callbackHandler: @escaping ([Service]) -> Void) {
-        callbackHandler([
-            Service(name:"No recent events.", status:""),
+    func getServices() {
+        self.callbackHandler([
             Service(name:"App Store", status:"not available"),
             Service(name:"Device Enrollment Program", status:"available"),
             Service(name:"iOS Device Activation", status:"available"),

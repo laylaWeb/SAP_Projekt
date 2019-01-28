@@ -12,8 +12,14 @@ import Alamofire
 import SwiftSoup
 
 struct AWSDataService: MainDataService {
+    
+    private let callbackHandler: ([Service]) -> Void
+    
+    init(callbackHandler: @escaping ([Service]) -> Void) {
+        self.callbackHandler = callbackHandler
+    }
    
-    func getServices(callbackHandler: @escaping ([Service]) -> Void) {
+    func getServices() {
         let myUrl = "https://status.aws.amazon.com/"
         
         AF.request(myUrl, method: .get, parameters:nil, encoding: URLEncoding.default)
@@ -30,7 +36,7 @@ struct AWSDataService: MainDataService {
                             let status = try element.children().get(1).text()
                             services.append(Service(name:"Region Europe", status:status))
                         }
-                        callbackHandler(services)
+                        self.callbackHandler(services)
                     } else {
                         var services: [Service] = []
                         for element in rows.array() {
@@ -38,7 +44,7 @@ struct AWSDataService: MainDataService {
                             let status = try element.children().get(2).text()
                             services.append(Service(name: name, status: status))
                         }
-                        callbackHandler(services)
+                        self.callbackHandler(services)
                     }
                    
                 } catch let error {
