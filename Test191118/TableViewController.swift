@@ -65,6 +65,9 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        _ = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
+        
         showServices()
         
         refresher = UIRefreshControl()
