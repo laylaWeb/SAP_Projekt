@@ -15,6 +15,9 @@ enum AWSError : Error {
 
 class TableViewController: UITableViewController {
     
+    var refresher: UIRefreshControl!
+    
+    
     let headlines = ["Amazon Web Services", "Apple Services"]
     var awsServices: [Service] = []
     var appleServices: [Service] = []
@@ -62,17 +65,26 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showServices()
         
+        refresher = UIRefreshControl()
+        tableView.addSubview(refresher)
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher.addTarget(self, action: #selector(showServices), for: .valueChanged)
+        
+    }
+    
+    
+    @objc func showServices() {
         firstly {
             when(fulfilled: dummyCompletion(), awsCompletion())
-        }.done { dummyServices, awsServices in
-            self.dummyServices = dummyServices
-            self.awsServices = awsServices
-        }.ensure {
-            self.tableView.reloadData()
+            }.done { dummyServices, awsServices in
+                self.dummyServices = dummyServices
+                self.awsServices = awsServices
+            }.ensure {
+                self.tableView.reloadData()
+                self.refresher.endRefreshing()
         }
-        
-        
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
