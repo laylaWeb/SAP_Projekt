@@ -65,10 +65,13 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Spinner.start(style: .white, backColor: UIColor.white, baseColor: UIColor.blue)
         
-        _ = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
         
-        showServices()
+       showServices()
+    
+    
         
         refresher = UIRefreshControl()
         tableView.addSubview(refresher)
@@ -85,9 +88,14 @@ class TableViewController: UITableViewController {
                 self.dummyServices = dummyServices
                 self.awsServices = awsServices
             }.ensure {
+                Spinner.stop()
                 self.tableView.reloadData()
                 self.refresher.endRefreshing()
         }
+        
+    
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -108,6 +116,7 @@ class TableViewController: UITableViewController {
         }
         return 0
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

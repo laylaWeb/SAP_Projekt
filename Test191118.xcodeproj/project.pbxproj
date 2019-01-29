@@ -14,6 +14,7 @@
 		26A54EC921E4D43B0033C3EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26A54EC821E4D43B0033C3EB /* Launch Screen.storyboard */; };
 		26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ABAC0D21A43D4300C4E8C3 /* TableViewController.swift */; };
 		26ABAC1621AC84EC00C4E8C3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ABAC1521AC84EC00C4E8C3 /* SettingsTableViewController.swift */; };
+		AA36885D2200AB83007172ED /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36885C2200AB83007172ED /* Spinner.swift */; };
 		AA86DEED21C018890025D6DB /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA86DEEC21C018890025D6DB /* Parser.swift */; };
 		D7F857C6DB311216E25E48C4 /* Pods_Test191118.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE939B51E4C4F9F93CE94E /* Pods_Test191118.framework */; };
 		E428962621E4E31E002E3D62 /* MainDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E428962521E4E31E002E3D62 /* MainDataService.swift */; };
@@ -53,6 +54,7 @@
 		7699D5C1BD8437144A80B1E1 /* Pods-Test191118.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test191118.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test191118/Pods-Test191118.release.xcconfig"; sourceTree = "<group>"; };
 		9276928A3BEBE425155464C9 /* Pods-Test191118.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test191118.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Test191118/Pods-Test191118.debug.xcconfig"; sourceTree = "<group>"; };
 		9ACE939B51E4C4F9F93CE94E /* Pods_Test191118.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test191118.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA36885C2200AB83007172ED /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		AA86DEEC21C018890025D6DB /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		C53D2387D016DC4BB58CCE5B /* Pods_Test191118Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test191118Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E428962521E4E31E002E3D62 /* MainDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataService.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				E49A492F21F9FC9200435DE3 /* AppleDataService.swift */,
 				E428962721E4E3B4002E3D62 /* AWSDataService.swift */,
 				E428962B21E4FB23002E3D62 /* DummyDataService.swift */,
+				AA36885C2200AB83007172ED /* Spinner.swift */,
 			);
 			path = Test191118;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E428962C21E4FB23002E3D62 /* DummyDataService.swift in Sources */,
+				AA36885D2200AB83007172ED /* Spinner.swift in Sources */,
 				E428962621E4E31E002E3D62 /* MainDataService.swift in Sources */,
 				E428962821E4E3B4002E3D62 /* AWSDataService.swift in Sources */,
 				AA86DEED21C018890025D6DB /* Parser.swift in Sources */,
