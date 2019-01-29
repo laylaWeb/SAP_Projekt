@@ -124,13 +124,6 @@ class TableViewController: UITableViewController {
         cell.textLabel?.text = service?.name
         cell.detailTextLabel?.text = service?.status
         
-        if(cell.detailTextLabel?.text == "Available") {
-            cell.imageView?.image = UIImage(named: "gruen")
-        }
-        else {
-            cell.imageView?.image = UIImage(named: "rot")
-        }
-        
         return cell
     }
     
