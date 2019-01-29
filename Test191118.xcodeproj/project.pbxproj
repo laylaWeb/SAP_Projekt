@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		264B4F4E2200B17100757942 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B4F4D2200B17100757942 /* DetailsViewController.swift */; };
 		2657E20321A3456900DFB872 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657E20221A3456900DFB872 /* AppDelegate.swift */; };
 		2657E20821A3456900DFB872 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2657E20621A3456900DFB872 /* Main.storyboard */; };
 		2657E20A21A3456B00DFB872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2657E20921A3456B00DFB872 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		264B4F4D2200B17100757942 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		2657E20221A3456900DFB872 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2657E20721A3456900DFB872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2657E20921A3456B00DFB872 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				26ABAC0D21A43D4300C4E8C3 /* TableViewController.swift */,
 				2657E20621A3456900DFB872 /* Main.storyboard */,
 				26ABAC1521AC84EC00C4E8C3 /* SettingsTableViewController.swift */,
+				264B4F4D2200B17100757942 /* DetailsViewController.swift */,
 				2657E20921A3456B00DFB872 /* Assets.xcassets */,
 				2657E20B21A3456B00DFB872 /* LaunchScreen.storyboard */,
 				2657E20E21A3456B00DFB872 /* Info.plist */,
@@ -328,6 +331,7 @@
 				E428962C21E4FB23002E3D62 /* DummyDataService.swift in Sources */,
 				E428962621E4E31E002E3D62 /* MainDataService.swift in Sources */,
 				E428962821E4E3B4002E3D62 /* AWSDataService.swift in Sources */,
+				264B4F4E2200B17100757942 /* DetailsViewController.swift in Sources */,
 				AA86DEED21C018890025D6DB /* Parser.swift in Sources */,
 				2657E20321A3456900DFB872 /* AppDelegate.swift in Sources */,
 				26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */,
