@@ -41,7 +41,7 @@ class Parser: NSObject, WKNavigationDelegate {
             let services = self.findServices(inputArray : serviceStringArray)
             let filteredServices = self.filterServices(unfiltered: services)
             self.updateServicesInTableView(services: filteredServices)
-            self.checkingServicesEachMinutes()
+            
           
            
             
@@ -51,29 +51,7 @@ class Parser: NSObject, WKNavigationDelegate {
         self.getServiceStringArrayFromJS( handleResult: parseFilterUpdateServices)
         
 }
-    
-    @objc
-    func printCat()
-    {
-        let parseFilterUpdateServices : ([String]) -> Void = { serviceStringArray in
-            let services = self.findServices(inputArray : serviceStringArray)
-            let filteredServices = self.filterServices(unfiltered: services)
-            self.updateServicesInTableView(services: filteredServices)
-            self.checkingServicesEachMinutes()
-            
-            
-        }
-        
-        self.getServiceStringArrayFromJS( handleResult: parseFilterUpdateServices)
-        
-        
-    }
-    
-    func checkingServicesEachMinutes()
-    {
-        _ = Timer.scheduledTimer(timeInterval: 900, target: self, selector: #selector (self.printCat), userInfo: nil, repeats: true)
-        
-   }
+
     
     func getServiceStringArrayFromJS( handleResult : @escaping ([String]) -> Void )  {
         webView.evaluateJavaScript("Array.from(document.getElementsByClassName('event')).map ( el => el.innerText )") {
