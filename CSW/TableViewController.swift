@@ -2,7 +2,7 @@
 //  TableViewController.swift
 //  CSW
 //
-//  Created by Sarah on 20.11.18.
+//  Created by Sar/Users/Sarah/Desktop/SAPDashboardApp/Test191118/SettingsTableViewController.swiftah on 20.11.18.
 //  Copyright © 2018 Sarah. All rights reserved.
 //
 
@@ -114,16 +114,22 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
         
         var service: Service?
-        if indexPath.section == 0 {
+        if (indexPath.section == 0) {
             service = awsServices[indexPath.row]
-        }
-        else if indexPath.section == 1 {
+        } else if (indexPath.section == 1) {
             service = dummyServices[indexPath.row]
         }
         
-        cell.textLabel?.text = service?.name
-        cell.detailTextLabel?.text = service?.status
+        cell.textLabel?.text = service!.name
+        cell.detailTextLabel?.text = service!.status //Available
         
+        if(cell.detailTextLabel?.text == "available" || cell.detailTextLabel?.text == "No recent events."){
+            cell.imageView?.image = UIImage(named: "gruen")
+        }
+        else{
+            cell.imageView?.image = UIImage(named: "rot")
+        }
+
         return cell
     }
     
