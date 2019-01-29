@@ -115,15 +115,15 @@ class TableViewController: UITableViewController {
         
         var service: Service?
         if (indexPath.section == 0) {
-            service = appleServices[indexPath.row]
+            service = awsServices[indexPath.row]
         } else if (indexPath.section == 1) {
-            service = amazonServices[indexPath.row]
+            service = dummyServices[indexPath.row]
         }
         
         cell.textLabel?.text = service!.name
         cell.detailTextLabel?.text = service!.status //Available
         
-        if(cell.detailTextLabel?.text == "Available"){
+        if(cell.detailTextLabel?.text == "available" || cell.detailTextLabel?.text == "No recent events."){
             cell.imageView?.image = UIImage(named: "gruen")
         }
         else{
