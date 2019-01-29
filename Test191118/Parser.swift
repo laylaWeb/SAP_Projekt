@@ -18,12 +18,12 @@ struct Service {
 class Parser: NSObject, WKNavigationDelegate {
     
     private let url: URL
-    @objc private let webView: WKWebView
-    private let callbackHandler: ([Service]) -> Void
+    private let webView: WKWebView
+    var callbackHandler: ([Service]) -> Void?
     
-    init(url: URL, callbackHandler: @escaping ([Service]) -> Void) {
-        self.url = url
+    init(callbackHandler: @escaping ([Service]) -> Void) {
         self.callbackHandler = callbackHandler
+        self.url = URL(string:"https://www.apple.com/support/systemstatus/")!
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
     }
@@ -104,9 +104,12 @@ class Parser: NSObject, WKNavigationDelegate {
     func filterServices (unfiltered : [Service]) -> [Service] {
         return unfiltered.filter {
             service in
-            service.name.lowercased() == "app store" || service.name == "Mac App Store" || service.name == "Volume Purchase Program"
-                || service.name == "iOS Device Activation" || service.name == "Device Enrollment Program" || service.name == "macOS Software Update" || service.name == "macOS Software Update"
-            
+                service.name == "App Store" ||
+                service.name == "Mac App Store" ||
+                service.name == "Volume Purchase Program" ||
+                service.name == "iOS Device Activation" ||
+                service.name == "Device Enrollment Program" ||
+                service.name == "macOS Software Update"
         }
     }
     
