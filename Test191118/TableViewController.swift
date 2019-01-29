@@ -2,7 +2,7 @@
 //  TableViewController.swift
 //  Test191118
 //
-//  Created by Sar/Users/Sarah/Desktop/SAPDashboardApp/Test191118/SettingsTableViewController.swiftah on 20.11.18.
+//  Created by Sarah on 20.11.18.
 //  Copyright © 2018 Sarah. All rights reserved.
 //
 
@@ -14,6 +14,9 @@ enum AWSError : Error {
 }
 
 class TableViewController: UITableViewController {
+    
+    var refresher: UIRefreshControl!
+    
     
     let headlines = ["Amazon Web Services", "Apple Services"]
     var awsServices: [Service] = []
@@ -63,27 +66,28 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //15,) hier entsteht jetzt die funktion, und die bleibt jetzt auch in der View erhalten.
-        let preferences = UserDefaults.standard
-        if (preferences.object(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY) != nil ) {
-            showInactiveOnly = preferences.bool(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
-        firstly {
-            when(fulfilled: dummyCompletion(), awsCompletion())
-        }.done { dummyServices, awsServices in
-            self.dummyServices = dummyServices
-            self.awsServices = awsServices
-        }.ensure {
-            self.tableView.reloadData()
-        }
+        _ = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
         
-        loadData()
+        showServices()
+        
+        refresher = UIRefreshControl()
+        tableView.addSubview(refresher)
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher.addTarget(self, action: #selector(showServices), for: .valueChanged)
+        
     }
     
-    // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return headlines.count
+    @objc func showServices() {
+        firstly {
+            when(fulfilled: dummyCompletion(), awsCompletion())
+            }.done { dummyServices, awsServices in
+                self.dummyServices = dummyServices
+                self.awsServices = awsServices
+            }.ensure {
+                self.tableView.reloadData()
+                self.refresher.endRefreshing()
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -120,43 +124,7 @@ class TableViewController: UITableViewController {
         cell.textLabel?.text = service?.name
         cell.detailTextLabel?.text = service?.status
         
-        if(cell.detailTextLabel?.text == "Available") {
-            cell.imageView?.image = UIImage(named: "gruen")
-        }
-        else {
-            cell.imageView?.image = UIImage(named: "rot")
-        }
-        
         return cell
-    }
- 
-    func loadData() {
-        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) {
-            [weak self] services in
-            
-            // 16. Wenn wit filtern, dann filtert er
-            if (self != nil && self!.showInactiveOnly) {
-                self!.appleServices = services.filter {
-                    service in
-                    service.status == "Unavailable"
-                }
-            } else
-            
-            //17. ansonszen Liste komplett
-            {
-                self?.appleServices = services
-            }
-            self?.tableView.reloadData()
-        }
-        //allServices = awsServices + appleServices
-        appleServicesParser.parse()
-        
-        if (showInactiveOnly) {
-            amazonServices = amazonServices.filter{
-                service in service.status == "Unavailable"
-                
-            }
-        }
     }
     
 }
