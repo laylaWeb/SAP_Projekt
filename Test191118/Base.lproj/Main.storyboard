@@ -12,7 +12,7 @@
         <!--Cloud Services Watcher-->
         <scene sceneID="kx4-iq-OGf">
             <objects>
-                <tableViewController id="mNd-vm-ZdS" customClass="TableViewController" customModule="CSW" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="mNd-vm-ZdS" customClass="TableViewController" customModule="Test191118" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7xL-Tf-1dR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,7 +176,7 @@
         <!--Settings Table View Controller-->
         <scene sceneID="gKa-aO-Nxg">
             <objects>
-                <viewController id="3IO-Dz-J0U" customClass="SettingsTableViewController" customModule="CSW" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3IO-Dz-J0U" customClass="SettingsTableViewController" customModule="Test191118" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="caL-np-0Ck">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
