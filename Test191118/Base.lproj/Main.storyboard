@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pqx-4G-rx5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pqx-4G-rx5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -239,8 +239,9 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tpf-QU-peg">
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tpf-QU-peg">
                                                                 <rect key="frame" x="293" y="0.0" width="52" height="34"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="switchInactiveOnly"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="K6U-m6-DeL"/>
                                                                 </constraints>
@@ -283,6 +284,7 @@
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXi-qM-uZK">
                                                                 <rect key="frame" x="293" y="0.0" width="52" height="21"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="switchDetailStatusReport"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="ebZ-Z3-T1U"/>
                                                                 </constraints>
@@ -395,6 +397,8 @@
                     </view>
                     <connections>
                         <outlet property="settingTableView" destination="XgJ-Mh-jw0" id="6hV-bA-82K"/>
+                        <outlet property="switchDetailedStatusReport" destination="SXi-qM-uZK" id="1uR-U5-5PF"/>
+                        <outlet property="switchInactiveOnly" destination="Tpf-QU-peg" id="r9t-Az-z07"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1e7-6v-8KE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -421,6 +425,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_settings" width="72" height="72"/>
+        <image name="ic_settings" width="36" height="36"/>
     </resources>
 </document>

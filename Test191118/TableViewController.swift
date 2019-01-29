@@ -11,7 +11,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let headlines = ["services", "Apple Service", "Amazon Web Service"]
+    let headlines = ["Apple Service", "Services", "Amazon Web Service"]
     
     //    let status = [["App Store", "Device Enrollment Programm", "iOS Device Activation", "Mac App Store", "macOS Software Update", "Volume Purchase Program"],
     //                  ["Asia Pacific", "Europe", "North America", "South America" ]]
@@ -23,20 +23,22 @@ class TableViewController: UITableViewController {
         Service(name: "Test 2", status: "Unavailable"),
         Service(name: "Test 3", status: "Available")
     ]
+    
     var appleServicesParser: Parser!
+    //14.) Die Liste soll sich hier ändern bzw. Filtern!
+    //soll ich die inactiven Server anzeigen oder nicht varible erstellt zunächst auf false
+    var showInactiveOnly = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) {
-            [weak self] services in
-            self?.appleServices = services
-            self?.tableView.reloadData()
+        //15,) hier entsteht jetzt die funktion, und die bleibt jetzt auch in der View erhalten.
+        let preferences = UserDefaults.standard
+        if (preferences.object(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY) != nil ) {
+            showInactiveOnly = preferences.bool(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
         }
-        //allServices = awsServices + appleServices
-        appleServicesParser.parse()
         
-        
+        loadData()
     }
     
     // MARK: - Table view data source
@@ -82,6 +84,35 @@ class TableViewController: UITableViewController {
         }
 
         return cell
+    }
+ 
+    func loadData() {
+        appleServicesParser = Parser(url: URL(string:"https://www.apple.com/support/systemstatus/")!) {
+            [weak self] services in
+            
+            // 16. Wenn wit filtern, dann filtert er
+            if (self != nil && self!.showInactiveOnly) {
+                self!.appleServices = services.filter {
+                    service in
+                    service.status == "Unavailable"
+                }
+            } else
+            
+            //17. ansonszen Liste komplett
+            {
+                self?.appleServices = services
+            }
+            self?.tableView.reloadData()
+        }
+        //allServices = awsServices + appleServices
+        appleServicesParser.parse()
+        
+        if (showInactiveOnly) {
+            amazonServices = amazonServices.filter{
+                service in service.status == "Unavailable"
+                
+            }
+        }
     }
     
 }
