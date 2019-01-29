@@ -15,9 +15,6 @@ enum AWSError : Error {
 
 class TableViewController: UITableViewController {
     
-    var refresher: UIRefreshControl!
-    
-    
     let headlines = ["Amazon Web Services", "Apple Services"]
     var awsServices: [Service] = []
     var appleServices: [Service] = []
@@ -66,28 +63,16 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
-        
-        showServices()
-        
-        refresher = UIRefreshControl()
-        tableView.addSubview(refresher)
-        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresher.addTarget(self, action: #selector(showServices), for: .valueChanged)
-        
-    }
-    
-    
-    @objc func showServices() {
         firstly {
             when(fulfilled: dummyCompletion(), awsCompletion())
-            }.done { dummyServices, awsServices in
-                self.dummyServices = dummyServices
-                self.awsServices = awsServices
-            }.ensure {
-                self.tableView.reloadData()
-                self.refresher.endRefreshing()
+        }.done { dummyServices, awsServices in
+            self.dummyServices = dummyServices
+            self.awsServices = awsServices
+        }.ensure {
+            self.tableView.reloadData()
         }
+        
+        
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -123,6 +108,13 @@ class TableViewController: UITableViewController {
         
         cell.textLabel?.text = service?.name
         cell.detailTextLabel?.text = service?.status
+        
+        if(cell.detailTextLabel?.text == "Available") {
+            cell.imageView?.image = UIImage(named: "gruen")
+        }
+        else {
+            cell.imageView?.image = UIImage(named: "rot")
+        }
         
         return cell
     }
