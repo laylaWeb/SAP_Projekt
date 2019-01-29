@@ -73,6 +73,8 @@ class TableViewController: UITableViewController {
     
     
         
+        _ = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
+        
         refresher = UIRefreshControl()
         tableView.addSubview(refresher)
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
