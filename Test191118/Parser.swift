@@ -19,11 +19,11 @@ class Parser: NSObject, WKNavigationDelegate {
     
     private let url: URL
     private let webView: WKWebView
-    private let callbackHandler: ([Service]) -> Void
+    var callbackHandler: ([Service]) -> Void?
     
-    init(url: URL, callbackHandler: @escaping ([Service]) -> Void) {
-        self.url = url
+    init(callbackHandler: @escaping ([Service]) -> Void) {
         self.callbackHandler = callbackHandler
+        self.url = URL(string:"https://www.apple.com/support/systemstatus/")!
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
     }

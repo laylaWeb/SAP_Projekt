@@ -11,14 +11,27 @@ import Foundation
 
 struct DummyDataService: MainDataService {
     
-    func getServices(callbackHandler: @escaping ([Service]) -> Void) {
-        callbackHandler([
-            Service(name:"No recent events.", status:""),
-            Service(name:"App Store", status:"not available"),
-            Service(name:"Device Enrollment Program", status:"available"),
-            Service(name:"iOS Device Activation", status:"available"),
-            Service(name:"Mac App Store", status:"available"),
-            Service(name:"macOS Software Update", status:"available"),
-            Service(name:"Volume Purchase Program", status:"available")])
+    private let callbackHandler: ([Service]) -> Void
+    
+    init(callbackHandler: @escaping ([Service]) -> Void) {
+        self.callbackHandler = callbackHandler
+    }
+    
+    func getServices() {
+        self.callbackHandler([
+            Service(name:"App Store", status: randomStatus()),
+            Service(name:"Device Enrollment Program", status: randomStatus()),
+            Service(name:"iOS Device Activation", status: randomStatus()),
+            Service(name:"Mac App Store", status: randomStatus()),
+            Service(name:"macOS Software Update", status: randomStatus()),
+            Service(name:"Volume Purchase Program", status: randomStatus())])
+    }
+    
+    func randomStatus() -> String {
+        if Int.random(in: 0...1) == 0 {
+            return "available"
+        } else {
+            return "not available"
+        }
     }
 }
