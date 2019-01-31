@@ -149,7 +149,7 @@ class TableViewController: UITableViewController {
             cell.imageView?.image = UIImage(named: "rot2")
         }
         else if(cell.detailTextLabel?.text == "service maintenance") {
-            cell.imageView?.image = UIImage(named: "blau")
+            cell.imageView?.image = UIImage(named: "blau2")
         }
 
         return cell
