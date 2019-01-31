@@ -9,9 +9,18 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
+    
+    var service: Service?
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var detailsLabel: UILabel!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameLabel?.text = service?.name
+        detailsLabel?.text = service?.status
+        
 
         // Do any additional setup after loading the view.
     }
@@ -28,3 +37,4 @@ class DetailsViewController: UIViewController {
     */
 
 }
+
