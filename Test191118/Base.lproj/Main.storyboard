@@ -53,7 +53,6 @@
                                             <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="1" green="0.27578275320000001" blue="0.98614029400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -102,7 +101,6 @@
         <!--Details View Controller-->
         <scene sceneID="h2w-XF-0w6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TkJ-GC-qrE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Pr1-Hh-oGT" customClass="DetailsViewController" customModule="Test191118" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A0p-37-dKP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -125,6 +123,7 @@
                         <viewLayoutGuide key="safeArea" id="aA9-jT-8C3"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TkJ-GC-qrE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-554.39999999999998" y="221.73913043478262"/>
         </scene>
