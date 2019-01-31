@@ -19,7 +19,10 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel?.text = service?.name
-        detailsLabel?.text = service?.status
+        
+        if service?.state == ServiceState.Maintenance {
+            detailsLabel?.text = "ksjhdfkshefiuwehfoisdf"
+        }
         
 
         // Do any additional setup after loading the view.
