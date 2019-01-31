@@ -8,6 +8,7 @@
 
 import UIKit
 import PromiseKit
+import UserNotifications
 
 enum AWSError : Error {
     case NameIsEmpty
@@ -16,7 +17,6 @@ enum AWSError : Error {
 class TableViewController: UITableViewController {
     
     var refresher: UIRefreshControl!
-    
     
     let headlines = ["Amazon Web Services", "Apple Services"]
     var awsServices: [Service] = []
@@ -67,23 +67,33 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         Spinner.start(style: .white, backColor: UIColor.white, baseColor: UIColor.blue)
         
-        _ = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
-        
-       showServices()
+        showServices()
     
-    
-        
-        _ = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 900.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
         
         refresher = UIRefreshControl()
         tableView.addSubview(refresher)
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher.tintColor = UIColor.blue
         refresher.addTarget(self, action: #selector(showServices), for: .valueChanged)
         
     }
     
     
     @objc func showServices() {
+//        // Create the request object.
+//        let content = UNMutableNotificationContent()
+//        content.body = "Status Changed!"
+//        //let trigger = MyTrigger(coder: NSCoder)
+//        //let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
+//
+//        // Schedule the request.
+//       // let center = UNUserNotificationCenter.current()
+//        center.add(request) { (error : Error?) in
+//            if let theError = error {
+//                print(theError.localizedDescription)
+//            }
+//        }
         firstly {
             when(fulfilled: dummyCompletion(), awsCompletion())
             }.done { dummyServices, awsServices in
@@ -91,12 +101,10 @@ class TableViewController: UITableViewController {
                 self.awsServices = awsServices
             }.ensure {
                 Spinner.stop()
-                self.tableView.reloadData()
                 self.refresher.endRefreshing()
+                self.tableView.reloadData()
+                
         }
-        
-    
-        
         
     }
     
@@ -143,5 +151,26 @@ class TableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let indexPath = tableView.indexPathForSelectedRow
+        if segue.identifier == "MySegueDetails" {
+            if (indexPath?.section == 0) {
+                var service = self.awsServices[(indexPath?.item)!]
+                
+                let detailsViewController = segue.destination as! DetailsViewController
+                detailsViewController.service = service
+                
+            } else if (indexPath?.section == 1) {
+                var service = self.dummyServices[(indexPath?.item)!]
+                let detailsViewController = segue.destination as! DetailsViewController
+                detailsViewController.service = service
+            }
+        }
+        
+    }
+    
+
     
 }

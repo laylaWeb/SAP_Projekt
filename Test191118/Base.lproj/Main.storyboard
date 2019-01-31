@@ -42,8 +42,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="App Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LKc-6v-phM">
-                                            <rect key="frame" x="16" y="5" width="76.5" height="20.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Servicename" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LKc-6v-phM">
+                                            <rect key="frame" x="16" y="5" width="99.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -59,7 +59,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Pr1-Hh-oGT" kind="show" id="bWB-8k-KRY"/>
+                                    <segue destination="Pr1-Hh-oGT" kind="show" identifier="MySegueDetails" id="bWB-8k-KRY"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCellAWS" textLabel="6sW-bo-EjW" style="IBUITableViewCellStyleDefault" id="cb8-tS-Zzc">
@@ -69,7 +69,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Apple Business Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6sW-bo-EjW">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Servicename" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6sW-bo-EjW">
                                             <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -102,29 +102,45 @@
         <!--Details View Controller-->
         <scene sceneID="h2w-XF-0w6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TkJ-GC-qrE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Pr1-Hh-oGT" customClass="DetailsViewController" customModule="Test191118" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A0p-37-dKP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="funktioniert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuX-ip-ald">
-                                <rect key="frame" x="81" y="240" width="88" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Servicename" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuX-ip-ald" userLabel="nameLabel">
+                                <rect key="frame" x="16" y="77" width="339" height="89"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="GWK-D0-l1A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wj2-tH-Ekh">
-                                <rect key="frame" x="213" y="235" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TOP"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jih-BR-QfB" userLabel="detailsLabel">
+                                <rect key="frame" x="16" y="148" width="115" height="75"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jih-BR-QfB" firstAttribute="leading" secondItem="HuX-ip-ald" secondAttribute="leading" id="34M-KX-tHV"/>
+                            <constraint firstItem="HuX-ip-ald" firstAttribute="top" secondItem="aA9-jT-8C3" secondAttribute="top" constant="13" id="DoI-vd-f7s"/>
+                            <constraint firstItem="Jih-BR-QfB" firstAttribute="leading" secondItem="A0p-37-dKP" secondAttribute="leadingMargin" id="UfD-6i-057"/>
+                            <constraint firstItem="aA9-jT-8C3" firstAttribute="bottom" secondItem="Jih-BR-QfB" secondAttribute="bottom" constant="469" id="XsO-PH-eTg"/>
+                            <constraint firstItem="Jih-BR-QfB" firstAttribute="top" secondItem="aA9-jT-8C3" secondAttribute="top" constant="59" id="bWN-Vl-1Yh"/>
+                            <constraint firstItem="aA9-jT-8C3" firstAttribute="trailing" secondItem="HuX-ip-ald" secondAttribute="trailing" constant="138" id="kFf-E9-O3S"/>
+                            <constraint firstItem="aA9-jT-8C3" firstAttribute="trailing" secondItem="Jih-BR-QfB" secondAttribute="trailing" constant="244" id="rIJ-GQ-mcq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aA9-jT-8C3"/>
                     </view>
+                    <connections>
+                        <outlet property="detailsLabel" destination="Jih-BR-QfB" id="cwc-ez-e2g"/>
+                        <outlet property="nameLabel" destination="HuX-ip-ald" id="Yed-8A-Fgd"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TkJ-GC-qrE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-554.39999999999998" y="221.73913043478262"/>
         </scene>
