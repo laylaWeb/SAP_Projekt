@@ -140,15 +140,15 @@ class TableViewController: UITableViewController {
         }
         
         cell.textLabel?.text = service!.name
-        cell.detailTextLabel?.text = service!.status //Available
+        cell.detailTextLabel?.text = service!.stateMessage //Available
         
-        if(cell.detailTextLabel?.text == "service available" || cell.detailTextLabel?.text == "No recent events."){
+        if(service!.state == ServiceState.Available){
             cell.imageView?.image = UIImage(named: "gruen2")
         }
-        else if(cell.detailTextLabel?.text == "service disruption") {
+        else if(service!.state == ServiceState.Unavailable) {
             cell.imageView?.image = UIImage(named: "rot2")
         }
-        else if(cell.detailTextLabel?.text == "service maintenance") {
+        else if(service!.state == ServiceState.Maintenance) {
             cell.imageView?.image = UIImage(named: "blau2")
         }
 
