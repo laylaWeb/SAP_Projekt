@@ -19,27 +19,28 @@ struct DummyDataService: MainDataService {
     
     func getServices() {
         self.callbackHandler([
-            Service(name:"App Store", status: randomStatusBlue()),
-            Service(name:"Device Enrollment Program", status: randomStatusRed()),
-            Service(name:"iOS Device Activation", status: randomStatusBlue()),
-            Service(name:"Mac App Store", status: randomStatusRed()),
-            Service(name:"macOS Software Update", status: randomStatusRed()),
-            Service(name:"Volume Purchase Program", status: randomStatusRed())])
+            newService(name:"App Store"),
+            newService(name:"Device Enrollment Program"),
+            newService(name:"iOS Device Activation"),
+            newService(name:"Mac App Store"),
+            newService(name:"macOS Software Update"),
+            newService(name:"Volume Purchase Program")])
     }
     
-    func randomStatusRed() -> String {
-        if Int.random(in: 0...1) == 0 {
-            return "service available"
+    func randomStatus() -> (ServiceState, String) {
+        let random = Int.random(in: 0...2)
+        if random == 0 {
+            return (ServiceState.Available, "service available")
+        } else if random == 1 {
+            return (ServiceState.Unavailable, "service disruption")
         } else {
-            return "service disruption"
+            return (ServiceState.Maintenance, "service maintenance")
         }
     }
     
-    func randomStatusBlue() -> String {
-        if Int.random(in: 0...1) == 0 {
-            return "service available"
-        } else {
-            return "service maintenance"
-        }
+    
+    func newService(name: String) -> Service {
+        let (state, stateMessage) = randomStatus()
+        return Service(name: name, stateMessage: stateMessage, state: state)
     }
 }

@@ -12,7 +12,15 @@ import WebKit
 
 struct Service {
     let name: String
-    let status: String
+    let stateMessage: String
+    let state: ServiceState
+}
+
+enum ServiceState {
+    case Available
+    case Unavailable
+    case Maintenance
+    case Unknown
 }
 
 class Parser: NSObject, WKNavigationDelegate {
@@ -70,10 +78,10 @@ class Parser: NSObject, WKNavigationDelegate {
             val in
             let split = val.components(separatedBy: " - ")
             
-            if let name = split.first, let status = split.last {
-                let service = Service(name: name, status: status)
+            if let name = split.first, let stateMessage = split.last {
+                let state = Parser.evaluateState(stateMessage: stateMessage)
+                let service = Service(name: name, stateMessage: stateMessage, state: state)
                 services.append(service)
-               
             }
         }
         return services
@@ -98,4 +106,14 @@ class Parser: NSObject, WKNavigationDelegate {
             self?.callbackHandler(services)
         }
     }
+    
+    static func evaluateState(stateMessage: String) -> ServiceState {
+        // TODO: Assert other states
+        if stateMessage == "Problem" {
+            return ServiceState.Unavailable
+        } else {
+            return ServiceState.Available
+        }
+    }
+    
 }
