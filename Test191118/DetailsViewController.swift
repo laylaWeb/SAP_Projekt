@@ -20,8 +20,14 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         nameLabel?.text = service?.name
         
-        if service?.state == ServiceState.Maintenance {
-            detailsLabel?.text = "ksjhdfkshefiuwehfoisdf"
+        if service?.state == ServiceState.Available {
+            detailsLabel?.text = "Everything is operating normally."
+        }
+        else if service?.state == ServiceState.Maintenance {
+            detailsLabel?.text = "A maintenance window is scheduled. Service is available, but latency issues might occur."
+        }
+        else if service?.state == ServiceState.Unavailable {
+            detailsLabel?.text = "Service is disrupted. Please check again later."
         }
         
 
