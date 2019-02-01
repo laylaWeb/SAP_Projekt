@@ -9,6 +9,74 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Info View Controller-->
+        <scene sceneID="XoC-rO-JAw">
+            <objects>
+                <viewController id="8bH-lh-zks" customClass="InfoViewController" customModule="Test191118" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YRn-71-74D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6u-Te-NzA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About this app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxE-gd-Wy1">
+                                        <rect key="frame" x="15" y="62" width="144" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="UGr-Xw-TZ9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW4-nG-ekL">
+                                        <rect key="frame" x="15" y="111" width="352" height="102"/>
+                                        <string key="text">With this application you can track the status of specific Apple and Amazon Webservices. You can also add and manage yout favourite webservices and receive notification when a server is disuptive or in maintenance.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbq-Ic-PMa">
+                                        <rect key="frame" x="38" y="548" width="359" height="47"/>
+                                        <string key="text">© Marianne Bähne, Sarah Kraus, Sophie Kuna,
+Lan Anh Phan, Mirvete Rexha, Hai Trang Vu Thi, Jennifer Zander</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bW4-nG-ekL" firstAttribute="leading" secondItem="W6u-Te-NzA" secondAttribute="leading" constant="15" id="0DB-m8-XRM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jbq-Ic-PMa" secondAttribute="trailing" constant="8" id="1Wp-y8-weC"/>
+                                    <constraint firstItem="Jbq-Ic-PMa" firstAttribute="leading" secondItem="W6u-Te-NzA" secondAttribute="leading" constant="8" id="Bvq-3v-sCX"/>
+                                    <constraint firstItem="Jbq-Ic-PMa" firstAttribute="top" secondItem="bW4-nG-ekL" secondAttribute="bottom" constant="336" id="LlO-Pt-KMv"/>
+                                    <constraint firstItem="bW4-nG-ekL" firstAttribute="top" secondItem="hxE-gd-Wy1" secondAttribute="bottom" constant="23" id="Mh9-Kq-KgG"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jbq-Ic-PMa" secondAttribute="bottom" constant="8" id="Ord-lI-VOF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jbq-Ic-PMa" secondAttribute="trailing" constant="8" id="Z9G-GK-YUZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="bW4-nG-ekL" secondAttribute="trailing" constant="8" id="a5X-WJ-Amu"/>
+                                    <constraint firstItem="Jbq-Ic-PMa" firstAttribute="leading" secondItem="W6u-Te-NzA" secondAttribute="leading" constant="8" id="eJh-UW-X69"/>
+                                    <constraint firstItem="Jbq-Ic-PMa" firstAttribute="top" secondItem="bW4-nG-ekL" secondAttribute="bottom" constant="336" id="nVY-Bw-SiM"/>
+                                    <constraint firstItem="hxE-gd-Wy1" firstAttribute="top" secondItem="W6u-Te-NzA" secondAttribute="top" constant="62" id="ozC-Zz-J5A"/>
+                                    <constraint firstItem="hxE-gd-Wy1" firstAttribute="leading" secondItem="bW4-nG-ekL" secondAttribute="leading" id="wk4-jC-h4N"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jbq-Ic-PMa" secondAttribute="bottom" constant="8" id="xSM-zO-89h"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="W6u-Te-NzA" firstAttribute="bottom" secondItem="e84-pb-bjC" secondAttribute="bottom" id="9aK-Sg-rNG"/>
+                            <constraint firstItem="W6u-Te-NzA" firstAttribute="leading" secondItem="e84-pb-bjC" secondAttribute="leading" id="R8w-qv-dsq"/>
+                            <constraint firstItem="W6u-Te-NzA" firstAttribute="trailing" secondItem="e84-pb-bjC" secondAttribute="trailing" id="bXs-8K-OT3"/>
+                            <constraint firstItem="W6u-Te-NzA" firstAttribute="top" secondItem="e84-pb-bjC" secondAttribute="top" id="t4s-cX-BRy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e84-pb-bjC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mli-Mx-IOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-554.39999999999998" y="-1217.5412293853074"/>
+        </scene>
         <!--Cloud Services Watcher-->
         <scene sceneID="kx4-iq-OGf">
             <objects>
@@ -90,6 +158,12 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="3IO-Dz-J0U" kind="show" id="HFC-06-2M5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="infobutton" id="hAh-F5-bWz">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="8bH-lh-zks" kind="show" id="InM-hF-h4S"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -660,5 +734,6 @@
     </scenes>
     <resources>
         <image name="ic_settings" width="72" height="72"/>
+        <image name="infobutton" width="24" height="24"/>
     </resources>
 </document>
