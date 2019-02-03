@@ -26,7 +26,7 @@ class TableViewController: UITableViewController {
     var awsServicesParser: AWSDataService!
     var dummyServicesParser: DummyDataService!
     
-    func appleCompletion() -> Promise<[Service]> {
+    func appleCompletion() -> Promise<[Service]> { //code für switches nciht in die promises
         return Promise { seal in
             
             appleServicesParser = AppleDataService(callbackHandler: { services in
@@ -94,7 +94,7 @@ class TableViewController: UITableViewController {
 //                print(theError.localizedDescription)
 //            }
 //        }
-        firstly {
+        firstly { //code für switches auch nicht hier rein
             when(fulfilled: dummyCompletion(), awsCompletion())
             }.done { dummyServices, awsServices in
                 self.dummyServices = dummyServices
