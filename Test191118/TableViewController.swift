@@ -71,6 +71,10 @@ class TableViewController: UITableViewController {
     
         _ = Timer.scheduledTimer(timeInterval: 900.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
         
+        let debitOverdraftNotifCategory = UNNotificationCategory(identifier: "debitOverdraftNotification", actions: [], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([debitOverdraftNotifCategory])
+        
+        
         refresher = UIRefreshControl()
         tableView.addSubview(refresher)
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -79,21 +83,20 @@ class TableViewController: UITableViewController {
         
     }
     
+    @IBAction func sendNotification() {
+
+        let content = UNMutableNotificationContent()
+        content.body = "Status Changed!"
+        content.categoryIdentifier = "debitOverdraftNotification"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
     
     @objc func showServices() {
-//        // Create the request object.
-//        let content = UNMutableNotificationContent()
-//        content.body = "Status Changed!"
-//        //let trigger = MyTrigger(coder: NSCoder)
-//        //let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
-//
-//        // Schedule the request.
-//       // let center = UNUserNotificationCenter.current()
-//        center.add(request) { (error : Error?) in
-//            if let theError = error {
-//                print(theError.localizedDescription)
-//            }
-//        }
+
         firstly {
             when(fulfilled: dummyCompletion(), awsCompletion())
             }.done { dummyServices, awsServices in
@@ -103,10 +106,13 @@ class TableViewController: UITableViewController {
                 Spinner.stop()
                 self.refresher.endRefreshing()
                 self.tableView.reloadData()
-                
         }
-        
     }
+    
+    func haveIdentifier() {
+       
+    }
+    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.headlines[section]
