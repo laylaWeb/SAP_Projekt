@@ -20,13 +20,7 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         nameLabel?.text = service?.name
         
-        if (service?.name.contains("AWS"))! {
-            detailsLabel?.text = service?.stateMessage
-        }
-        else if (service?.name.contains("Amazon"))! {
-            detailsLabel?.text = service?.stateMessage
-        }
-        else if service?.state == ServiceState.Available {
+        if service?.state == ServiceState.Available {
             detailsLabel?.text = "Everything is operating normally."
         }
         else if service?.state == ServiceState.Maintenance {

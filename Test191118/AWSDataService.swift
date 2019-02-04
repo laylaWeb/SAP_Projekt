@@ -60,8 +60,6 @@ struct AWSDataService: MainDataService {
         // TODO: Assert other states
         if stateMessage == "No recent events." {
             return ServiceState.Available
-        } else if stateMessage.contains("RESOLVED") {
-            return ServiceState.Available
         } else {
             return ServiceState.Unavailable
         }
