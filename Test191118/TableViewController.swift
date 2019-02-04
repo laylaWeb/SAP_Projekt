@@ -66,37 +66,60 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Spinner.start(style: .white, backColor: UIColor.white, baseColor: UIColor.blue)
-        
+
         showServices()
-    
+
         _ = Timer.scheduledTimer(timeInterval: 900.0, target: self, selector: #selector(showServices), userInfo:nil, repeats: true)
         
-        let debitOverdraftNotifCategory = UNNotificationCategory(identifier: "debitOverdraftNotification", actions: [], intentIdentifiers: [], options: [])
-        UNUserNotificationCenter.current().setNotificationCategories([debitOverdraftNotifCategory])
-        
+        let statusChangedNotifCategory = UNNotificationCategory(identifier: "statusChangedNotification", actions: [], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([statusChangedNotifCategory])
         
         refresher = UIRefreshControl()
         tableView.addSubview(refresher)
-        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher.attributedTitle = NSAttributedString(string: "refreshing")
         refresher.tintColor = UIColor.blue
         refresher.addTarget(self, action: #selector(showServices), for: .valueChanged)
         
     }
     
-    @IBAction func sendNotification() {
-
-        let content = UNMutableNotificationContent()
-        content.body = "Status Changed!"
-        content.categoryIdentifier = "debitOverdraftNotification"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//    @IBAction func sendNotification(sender: UIButton) {
+//        //clone alte Liste
+//        //Listen vergleichen
+//        //bei Änderungen Notification senden
+//        
+//        //Notification im Vordergrund ?
+//        self.showServices()
+//        
+//        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+//            
+//            guard settings.authorizationStatus == .authorized else { return }
+//
+//            let content = UNMutableNotificationContent()
+//            content.body = "Status Changed!"
+//            content.categoryIdentifier = "statusChangedNotification"
+//            
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+//            let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
+//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//        }
+//    }
+    
+    func sendNotif() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            
+            guard settings.authorizationStatus == .authorized else { return }
+            
+            let content = UNMutableNotificationContent()
+            content.body = "Status Changed!"
+            content.categoryIdentifier = "statusChangedNotification"
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+            let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
     }
     
-    
     @objc func showServices() {
-
         firstly {
             when(fulfilled: dummyCompletion(), awsCompletion())
             }.done { dummyServices, awsServices in
@@ -106,13 +129,9 @@ class TableViewController: UITableViewController {
                 Spinner.stop()
                 self.refresher.endRefreshing()
                 self.tableView.reloadData()
+                self.sendNotif()
         }
     }
-    
-    func haveIdentifier() {
-       
-    }
-    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.headlines[section]
