@@ -76,33 +76,33 @@ class TableViewController: UITableViewController {
         
         refresher = UIRefreshControl()
         tableView.addSubview(refresher)
-        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher.attributedTitle = NSAttributedString(string: "refreshing")
         refresher.tintColor = UIColor.blue
         refresher.addTarget(self, action: #selector(showServices), for: .valueChanged)
         
     }
     
-    @IBAction func sendNotification(sender: UIButton) {
-        //clone alte Liste
-        //Listen vergleichen
-        //bei Änderungen Notification senden
-        
-        //Notification im Vordergrund ?
-        self.showServices()
-        
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            
-            guard settings.authorizationStatus == .authorized else { return }
-
-            let content = UNMutableNotificationContent()
-            content.body = "Status Changed!"
-            content.categoryIdentifier = "statusChangedNotification"
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-            let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        }
-    }
+//    @IBAction func sendNotification(sender: UIButton) {
+//        //clone alte Liste
+//        //Listen vergleichen
+//        //bei Änderungen Notification senden
+//        
+//        //Notification im Vordergrund ?
+//        self.showServices()
+//        
+//        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+//            
+//            guard settings.authorizationStatus == .authorized else { return }
+//
+//            let content = UNMutableNotificationContent()
+//            content.body = "Status Changed!"
+//            content.categoryIdentifier = "statusChangedNotification"
+//            
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+//            let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
+//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//        }
+//    }
     
     func sendNotif() {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
