@@ -25,8 +25,9 @@ class TableViewController: UITableViewController {
     var appleServicesParser: AppleDataService!
     var awsServicesParser: AWSDataService!
     var dummyServicesParser: DummyDataService!
+    var showInactiveOnly = false
     
-    func appleCompletion() -> Promise<[Service]> { //code für switches nciht in die promises
+    func appleCompletion() -> Promise<[Service]> { //code für switches nicht in die promises
         return Promise { seal in
             
             appleServicesParser = AppleDataService(callbackHandler: { services in
@@ -64,7 +65,40 @@ class TableViewController: UITableViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        var service: Service?
+        if(service!.state == ServiceState.Available){
+            print("hello")
+            showServices()
+        }
+        
+        
+//               //Mirvete und ich 1
+//                let preferences = UserDefaults.standard
+//                if (preferences.object(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY) != nil ) {
+//                    showInactiveOnly = preferences.bool(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
+//
+//               appleServicesParser = AppleDataService(url:
+//               (string:"https://www.apple.com/support/systemstatus/")){
+//               [weak self] services in
+//
+//                        if (self != nil && self!.showInactiveOnly) {
+//                            self!.appleServices = services.filter {
+//                                service in
+//                                service.status !== "Available"
+//                            }
+//                        } else
+//
+//                            //17. ansonsten Liste komplett
+//                        {
+//                            self?.appleServices = services
+//                        }
+//                        self?.tableView.reloadData()
+//                    }
+//
+//        }
+//
+//                super.viewDidLoad()
+//     //-1
         Spinner.start(style: .white, backColor: UIColor.white, baseColor: UIColor.blue)
         
         showServices()
@@ -172,8 +206,10 @@ class TableViewController: UITableViewController {
             }
         }
         
-    }
     
 
+        
     
+}
+
 }
