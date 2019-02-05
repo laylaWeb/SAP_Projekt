@@ -114,9 +114,6 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
             //
             
             preferences.synchronize()
-        case "switchDetailStatusReport":
-            preferences.set(value, forKey: SettingsTableViewController.PREF_DETAILED_STATUS_REPORT)
-            preferences.synchronize()
         // TODO 4: same as above for switchGetNotification, dont forget to set the identifier on main.storyboard
             
         default:

@@ -65,11 +65,8 @@ class TableViewController: UITableViewController {
     
     
     override func viewDidLoad() {
-        var service: Service?
-        if(service!.state == ServiceState.Available){
-            print("hello")
-            showServices()
-        }
+
+                
         
         
 //               //Mirvete und ich 1
@@ -185,6 +182,19 @@ class TableViewController: UITableViewController {
         else if(service!.state == ServiceState.Maintenance) {
             cell.imageView?.image = UIImage(named: "blau2")
         }
+
+        
+        //show inactive only filter 
+        let preferences = UserDefaults.standard
+        if (preferences.object(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY) != nil ) {
+            showInactiveOnly = preferences.bool(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
+            
+            if(service!.state == ServiceState.Unavailable || service!.state == ServiceState.Maintenance){
+                print("hello")
+                showServices()
+            }
+        }
+
 
         return cell
     }
