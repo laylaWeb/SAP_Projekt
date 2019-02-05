@@ -6,6 +6,7 @@ target 'Test191118' do
   use_frameworks!
   pod 'Alamofire', '~> 5.0.0.beta.1'
   pod 'SwiftSoup'
+  pod 'PromiseKit', '~> 6.8'
 
   # Pods for Test191118
 end

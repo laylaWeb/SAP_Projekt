@@ -12,18 +12,26 @@ import WebKit
 
 struct Service {
     let name: String
-    let status: String
+    let stateMessage: String
+    let state: ServiceState
+}
+
+enum ServiceState {
+    case Available
+    case Unavailable
+    case Maintenance
+    case Unknown
 }
 
 class Parser: NSObject, WKNavigationDelegate {
     
     private let url: URL
     private let webView: WKWebView
-    private let callbackHandler: ([Service]) -> Void
+    var callbackHandler: ([Service]) -> Void?
     
-    init(url: URL, callbackHandler: @escaping ([Service]) -> Void) {
-        self.url = url
+    init(callbackHandler: @escaping ([Service]) -> Void) {
         self.callbackHandler = callbackHandler
+        self.url = URL(string:"https://www.apple.com/support/systemstatus/")!
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
     }
@@ -34,17 +42,24 @@ class Parser: NSObject, WKNavigationDelegate {
         webView.load(myRequest)
     }
     
+    @objc
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         
         let parseFilterUpdateServices : ([String]) -> Void = { serviceStringArray in
             let services = self.findServices(inputArray : serviceStringArray)
             let filteredServices = self.filterServices(unfiltered: services)
             self.updateServicesInTableView(services: filteredServices)
+            
+          
+           
+            
+    
         }
         
         self.getServiceStringArrayFromJS( handleResult: parseFilterUpdateServices)
         
-    }
+}
+
     
     func getServiceStringArrayFromJS( handleResult : @escaping ([String]) -> Void )  {
         webView.evaluateJavaScript("Array.from(document.getElementsByClassName('event')).map ( el => el.innerText )") {
@@ -63,8 +78,9 @@ class Parser: NSObject, WKNavigationDelegate {
             val in
             let split = val.components(separatedBy: " - ")
             
-            if let name = split.first, let status = split.last {
-                let service = Service(name: name, status: status)
+            if let name = split.first, let stateMessage = split.last {
+                let state = Parser.evaluateState(stateMessage: stateMessage)
+                let service = Service(name: name, stateMessage: stateMessage, state: state)
                 services.append(service)
             }
         }
@@ -83,10 +99,21 @@ class Parser: NSObject, WKNavigationDelegate {
         }
     }
     
+    
     func updateServicesInTableView( services : [Service]) {
         DispatchQueue.main.async {
             [weak self] in
             self?.callbackHandler(services)
         }
     }
+    
+    static func evaluateState(stateMessage: String) -> ServiceState {
+        // TODO: Assert other states
+        if stateMessage == "Problem" {
+            return ServiceState.Unavailable
+        } else {
+            return ServiceState.Available
+        }
+    }
+    
 }

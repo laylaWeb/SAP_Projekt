@@ -17,6 +17,10 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var settingTableView: UITableView!
     @IBAction func inactiveServer(_ sender: Any) {
+        
+//        if(service!.state !== ServiceState.Available){
+//            showServices()
+       // }
     }
     
     static let PREF_INACTIVE_ONLY = "inactiveOnly"
@@ -73,8 +77,6 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
         } else {
             detailedStatusReport = preferences.bool(forKey: SettingsTableViewController.PREF_DETAILED_STATUS_REPORT)
         }
-        switchDetailedStatusReport.setOn(detailedStatusReport, animated: true)
-        switchDetailedStatusReport.addTarget(self, action: #selector(onSwitchChanged), for: UIControl.Event.valueChanged)
         
         // TODO 3: same as above for switchGetNotification
         
@@ -90,6 +92,8 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     //8.)hier definiere ich eine Funktion es soll jetzt schliesslich funktionieren, die soll aufgerufen werden wenn jemand diesen Switch berührt!
   
     @objc func onSwitchChanged(mySwitch: UISwitch) {
+        
+        
         //10.) hier geben wir auf der konsole den isOn Status ausgeben
         
         //11.) gehe mainStoryboard dann brauchen wir ein Identifier,damit man die 3 Switche von einander unterscheiden kann nenn ich den "switchInactiveOnly"
@@ -103,9 +107,13 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
         switch mySwitch.accessibilityIdentifier {
         case "switchInactiveOnly":
             preferences.set(value, forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
-            preferences.synchronize()
-        case "switchDetailStatusReport":
-            preferences.set(value, forKey: SettingsTableViewController.PREF_DETAILED_STATUS_REPORT)
+            //
+            //
+            //hier kommt der Code rein?
+            //preferences.set(value, forKey: SettingsTableViewController.inactiveServer(<#T##SettingsTableViewController#>))
+            //
+            //
+            
             preferences.synchronize()
         // TODO 4: same as above for switchGetNotification, dont forget to set the identifier on main.storyboard
             
