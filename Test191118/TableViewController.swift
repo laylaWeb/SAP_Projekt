@@ -66,9 +66,6 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
 
-                
-        
-        
 //               //Mirvete und ich 1
 //                let preferences = UserDefaults.standard
 //                if (preferences.object(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY) != nil ) {
@@ -190,7 +187,7 @@ class TableViewController: UITableViewController {
             showInactiveOnly = preferences.bool(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
             
             if(service!.state == ServiceState.Unavailable || service!.state == ServiceState.Maintenance){
-                print("hello")
+                //print("hello")
                 showServices()
                 //self?.tableView.reloadData()
             }
