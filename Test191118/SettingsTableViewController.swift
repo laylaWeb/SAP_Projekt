@@ -17,6 +17,7 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var settingTableView: UITableView!
     @IBAction func inactiveServer(_ sender: Any) {
+        
 //        if(service!.state !== ServiceState.Available){
 //            showServices()
        // }
@@ -92,7 +93,7 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
   
     @objc func onSwitchChanged(mySwitch: UISwitch) {
         
-        viewDidLoad()
+        
         //10.) hier geben wir auf der konsole den isOn Status ausgeben
         
         //11.) gehe mainStoryboard dann brauchen wir ein Identifier,damit man die 3 Switche von einander unterscheiden kann nenn ich den "switchInactiveOnly"

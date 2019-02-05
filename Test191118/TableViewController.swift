@@ -192,8 +192,10 @@ class TableViewController: UITableViewController {
             if(service!.state == ServiceState.Unavailable || service!.state == ServiceState.Maintenance){
                 print("hello")
                 showServices()
+                //self?.tableView.reloadData()
             }
         }
+        //super.viewDidLoad()
 
 
         return cell
