@@ -35,7 +35,6 @@ class TableViewController: UITableViewController {
             })
             
             appleServicesParser.getServices()
-            
         }
     }
     
@@ -47,7 +46,6 @@ class TableViewController: UITableViewController {
             })
             
             awsServicesParser.getServices()
-            
         }
     }
     
@@ -59,7 +57,6 @@ class TableViewController: UITableViewController {
             })
             
             dummyServicesParser.getServices()
-            
         }
     }
     
@@ -94,18 +91,19 @@ class TableViewController: UITableViewController {
 //                print(theError.localizedDescription)
 //            }
 //        }
+       // print("show services")
+        
         firstly { //code für switches auch nicht hier rein
             when(fulfilled: dummyCompletion(), awsCompletion())
-            }.done { dummyServices, awsServices in
-                self.dummyServices = dummyServices
-                self.awsServices = awsServices
-            }.ensure {
-                Spinner.stop()
-                self.refresher.endRefreshing()
-                self.tableView.reloadData()
-                
+        }.done { dummyServices, awsServices in
+            self.dummyServices = dummyServices
+            self.awsServices = awsServices
+            self.filterIfNeeded()
+        }.ensure {
+            Spinner.stop()
+            self.refresher.endRefreshing()
+            self.tableView.reloadData()
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -126,8 +124,7 @@ class TableViewController: UITableViewController {
         }
         return 0
     }
-    
-    
+   // Das ist eine Methode die eine Zelle darstellt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
@@ -152,22 +149,33 @@ class TableViewController: UITableViewController {
             cell.imageView?.image = UIImage(named: "blau2")
         }
 
-        
-        //show inactive only filter 
+        //super.viewDidLoad()
+
+        return cell
+    }
+ 
+    func filterIfNeeded() {
+        //show inactive only filter
+       // Er guckt sich in den Einstellungen welche Eigenschaft gesetzt ist, wenn  es true ist dann
+        //filtert er  nur die Inaktiven!
         let preferences = UserDefaults.standard
         if (preferences.object(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY) != nil ) {
             showInactiveOnly = preferences.bool(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
+        }
+        
+        if (showInactiveOnly) {
+            appleServices = appleServices.filter{
+                service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
+            }
             
-            if(service!.state == ServiceState.Unavailable || service!.state == ServiceState.Maintenance){
-                //print("hello")
-                showServices()
-                //self?.tableView.reloadData()
+            awsServices = awsServices.filter {
+                service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
+            }
+            
+            dummyServices = dummyServices.filter {
+                service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
             }
         }
-        //super.viewDidLoad()
-
-
-        return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -186,11 +194,5 @@ class TableViewController: UITableViewController {
                 detailsViewController.service = service
             }
         }
-        
-    
-
-        
-    
-}
-
+    }
 }

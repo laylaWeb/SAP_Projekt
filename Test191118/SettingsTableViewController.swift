@@ -29,7 +29,7 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     
     let headlines2 = ["Add & Manage Webservers", "Apply Filter"]
-    let status2 = [[""], [""]]
+    let status2 = [[" "], []]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,7 +120,7 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return status2.count
+        return headlines2.count // 2
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -133,11 +133,30 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WebserverLabelCell", for: indexPath)
+        var cell: UITableViewCell
         
-        cell.textLabel?.text = status2[indexPath.section][indexPath.row]
-        
-        return cell
+        if (indexPath.section == 0) {
+           if (indexPath.row == 0) {
+                // Gib Zelle mit der url eingabe zurück
+               cell = tableView.dequeueReusableCell(withIdentifier: "NewUrlCell", for: indexPath)
+                
+                //cell.accessibilityIdentifier("urlEditText")
+    
+           }
+            else {
+                // Gib eine Liste der URLs zurück
+               cell = tableView.dequeueReusableCell(withIdentifier: "WebserverLabelCell", for: indexPath)
+                cell.textLabel?.text = status2[indexPath.section][indexPath.row]
+                
+            }
+        }
+       else {
+            //Gib die Liste der Apply Filter zurück
+         cell = tableView.dequeueReusableCell(withIdentifier: "InactiveServersLabelCell", for: indexPath)
+            
+       }
+    
+       return cell
     }
     
     //override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -219,3 +238,4 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     */
 
 }
+
