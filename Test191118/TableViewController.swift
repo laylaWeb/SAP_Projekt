@@ -18,16 +18,18 @@ class TableViewController: UITableViewController {
     
     var refresher: UIRefreshControl!
     
-    let headlines = ["Amazon Web Services", "Apple Services"]
+    let headlines = ["All Services", "Amazon Web Services", "Apple Services"]
     var awsServices: [Service] = []
     var appleServices: [Service] = []
+    var totalStatusService = Service(name: "TEST", stateMessage: " ", state: .Unknown )
+    var totalNumberOfProblems = 0
     var dummyServices: [Service] = []
     var appleServicesParser: AppleDataService!
     var awsServicesParser: AWSDataService!
     var dummyServicesParser: DummyDataService!
     var showInactiveOnly = false
     
-    func appleCompletion() -> Promise<[Service]> { //code für switches nicht in die promises
+    func appleCompletion() -> Promise<[Service]> {
         return Promise { seal in
             
             appleServicesParser = AppleDataService(callbackHandler: { services in
@@ -79,28 +81,6 @@ class TableViewController: UITableViewController {
         
     }
     
-//    @IBAction func sendNotification(sender: UIButton) {
-//        //clone alte Liste
-//        //Listen vergleichen
-//        //bei Änderungen Notification senden
-//        
-//        //Notification im Vordergrund ?
-//        self.showServices()
-//        
-//        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-//            
-//            guard settings.authorizationStatus == .authorized else { return }
-//
-//            let content = UNMutableNotificationContent()
-//            content.body = "Status Changed!"
-//            content.categoryIdentifier = "statusChangedNotification"
-//            
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-//            let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
-//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//        }
-//    }
-    
     func sendNotif() {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             
@@ -122,7 +102,30 @@ class TableViewController: UITableViewController {
             }.done { dummyServices, awsServices in
                 self.dummyServices = dummyServices
                 self.awsServices = awsServices
-            self.filterIfNeeded()
+                
+                var numberOfAWSProblems = 0
+                var numberOfDummyProblems = 0
+                
+                for service in awsServices {
+                    
+                    if service.state == .Unavailable {
+                        
+                        numberOfAWSProblems += 1
+                        
+                    }
+                }
+                
+                for service in dummyServices {
+                    
+                    if service.state == .Unavailable {
+                        
+                        numberOfDummyProblems += 1
+                    }
+                }
+                
+                var tempNumOfallProblems = numberOfAWSProblems + numberOfDummyProblems
+                self.totalNumberOfProblems = tempNumOfallProblems
+                self.filterIfNeeded()
             }.ensure {
                 Spinner.stop()
                 self.refresher.endRefreshing()
@@ -143,8 +146,11 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return the number of rows
         if section == 0 {
+            return 1
+        }
+        else if section == 1 {
             return awsServices.count
-        } else if section == 1 {
+        } else if section == 2 {
             return dummyServices.count
         }
         return 0
@@ -155,9 +161,28 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
         
         var service: Service?
+        var totalStatus = ""
+        
         if (indexPath.section == 0) {
+            
+            if totalNumberOfProblems > 0 {
+                if totalNumberOfProblems == 1 {
+                    totalStatus = "ATTENTION! \(totalNumberOfProblems) detected error"
+                } else {
+                    totalStatus = "ATTENTION! \(totalNumberOfProblems) detected errors"
+                }
+            } else {
+                totalStatus = "All Services operate normally"
+            }
+            
+            totalStatusService.name = totalStatus
+            service = totalStatusService
+            
+        }
+        
+        if (indexPath.section == 1) {
             service = awsServices[indexPath.row]
-        } else if (indexPath.section == 1) {
+        } else if (indexPath.section == 2) {
             service = dummyServices[indexPath.row]
         }
         

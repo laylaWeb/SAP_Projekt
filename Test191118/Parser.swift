@@ -11,9 +11,9 @@ import UIKit
 import WebKit
 
 struct Service {
-    let name: String
-    let stateMessage: String
-    let state: ServiceState
+    var name: String
+    var stateMessage: String
+    var state: ServiceState
 }
 
 enum ServiceState {
@@ -49,16 +49,10 @@ class Parser: NSObject, WKNavigationDelegate {
             let services = self.findServices(inputArray : serviceStringArray)
             let filteredServices = self.filterServices(unfiltered: services)
             self.updateServicesInTableView(services: filteredServices)
-            
-          
-           
-            
-    
         }
-        
         self.getServiceStringArrayFromJS( handleResult: parseFilterUpdateServices)
         
-}
+    }
 
     
     func getServiceStringArrayFromJS( handleResult : @escaping ([String]) -> Void )  {
