@@ -17,6 +17,10 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var settingTableView: UITableView!
     @IBAction func inactiveServer(_ sender: Any) {
+        
+//        if(service!.state !== ServiceState.Available){
+//            showServices()
+       // }
     }
     
     static let PREF_INACTIVE_ONLY = "inactiveOnly"
@@ -25,7 +29,7 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     
     let headlines2 = ["Add & Manage Webservers", "Apply Filter"]
-    let status2 = [[""], [""]]
+    let status2 = [[" "], []]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,8 +77,6 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
         } else {
             detailedStatusReport = preferences.bool(forKey: SettingsTableViewController.PREF_DETAILED_STATUS_REPORT)
         }
-        switchDetailedStatusReport.setOn(detailedStatusReport, animated: true)
-        switchDetailedStatusReport.addTarget(self, action: #selector(onSwitchChanged), for: UIControl.Event.valueChanged)
         
         // TODO 3: same as above for switchGetNotification
         
@@ -90,6 +92,8 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     //8.)hier definiere ich eine Funktion es soll jetzt schliesslich funktionieren, die soll aufgerufen werden wenn jemand diesen Switch berührt!
   
     @objc func onSwitchChanged(mySwitch: UISwitch) {
+        
+        
         //10.) hier geben wir auf der konsole den isOn Status ausgeben
         
         //11.) gehe mainStoryboard dann brauchen wir ein Identifier,damit man die 3 Switche von einander unterscheiden kann nenn ich den "switchInactiveOnly"
@@ -104,9 +108,6 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
         case "switchInactiveOnly":
             preferences.set(value, forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
             preferences.synchronize()
-        case "switchDetailStatusReport":
-            preferences.set(value, forKey: SettingsTableViewController.PREF_DETAILED_STATUS_REPORT)
-            preferences.synchronize()
         // TODO 4: same as above for switchGetNotification, dont forget to set the identifier on main.storyboard
             
         default:
@@ -119,7 +120,7 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return status2.count
+        return headlines2.count // 2
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -132,11 +133,30 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WebserverLabelCell", for: indexPath)
+        var cell: UITableViewCell
         
-        cell.textLabel?.text = status2[indexPath.section][indexPath.row]
-        
-        return cell
+        if (indexPath.section == 0) {
+           if (indexPath.row == 0) {
+                // Gib Zelle mit der url eingabe zurück
+               cell = tableView.dequeueReusableCell(withIdentifier: "NewUrlCell", for: indexPath)
+                
+                //cell.accessibilityIdentifier("urlEditText")
+    
+           }
+            else {
+                // Gib eine Liste der URLs zurück
+               cell = tableView.dequeueReusableCell(withIdentifier: "WebserverLabelCell", for: indexPath)
+                cell.textLabel?.text = status2[indexPath.section][indexPath.row]
+                
+            }
+        }
+       else {
+            //Gib die Liste der Apply Filter zurück
+         cell = tableView.dequeueReusableCell(withIdentifier: "InactiveServersLabelCell", for: indexPath)
+            
+       }
+    
+       return cell
     }
     
     //override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -218,3 +238,4 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     */
 
 }
+

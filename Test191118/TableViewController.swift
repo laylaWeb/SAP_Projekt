@@ -25,8 +25,9 @@ class TableViewController: UITableViewController {
     var appleServicesParser: AppleDataService!
     var awsServicesParser: AWSDataService!
     var dummyServicesParser: DummyDataService!
+    var showInactiveOnly = false
     
-    func appleCompletion() -> Promise<[Service]> {
+    func appleCompletion() -> Promise<[Service]> { //code für switches nicht in die promises
         return Promise { seal in
             
             appleServicesParser = AppleDataService(callbackHandler: { services in
@@ -34,7 +35,6 @@ class TableViewController: UITableViewController {
             })
             
             appleServicesParser.getServices()
-            
         }
     }
     
@@ -46,7 +46,6 @@ class TableViewController: UITableViewController {
             })
             
             awsServicesParser.getServices()
-            
         }
     }
     
@@ -58,13 +57,11 @@ class TableViewController: UITableViewController {
             })
             
             dummyServicesParser.getServices()
-            
         }
     }
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         Spinner.start(style: .white, backColor: UIColor.white, baseColor: UIColor.blue)
 
         showServices()
@@ -125,6 +122,7 @@ class TableViewController: UITableViewController {
             }.done { dummyServices, awsServices in
                 self.dummyServices = dummyServices
                 self.awsServices = awsServices
+            self.filterIfNeeded()
             }.ensure {
                 Spinner.stop()
                 self.refresher.endRefreshing()
@@ -151,8 +149,7 @@ class TableViewController: UITableViewController {
         }
         return 0
     }
-    
-    
+   // Das ist eine Methode die eine Zelle darstellt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCellApple", for: indexPath)
@@ -177,7 +174,33 @@ class TableViewController: UITableViewController {
             cell.imageView?.image = UIImage(named: "blau2")
         }
 
+        //super.viewDidLoad()
+
         return cell
+    }
+ 
+    func filterIfNeeded() {
+        //show inactive only filter
+       // Er guckt sich in den Einstellungen welche Eigenschaft gesetzt ist, wenn  es true ist dann
+        //filtert er  nur die Inaktiven!
+        let preferences = UserDefaults.standard
+        if (preferences.object(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY) != nil ) {
+            showInactiveOnly = preferences.bool(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
+        }
+        
+        if (showInactiveOnly) {
+            appleServices = appleServices.filter{
+                service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
+            }
+            
+            awsServices = awsServices.filter {
+                service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
+            }
+            
+            dummyServices = dummyServices.filter {
+                service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -196,9 +219,5 @@ class TableViewController: UITableViewController {
                 detailsViewController.service = service
             }
         }
-        
     }
-    
-
-    
 }
