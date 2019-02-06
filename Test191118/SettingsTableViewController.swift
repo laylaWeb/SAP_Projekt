@@ -107,13 +107,6 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
         switch mySwitch.accessibilityIdentifier {
         case "switchInactiveOnly":
             preferences.set(value, forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
-            //
-            //
-            //hier kommt der Code rein?
-            //preferences.set(value, forKey: SettingsTableViewController.inactiveServer(<#T##SettingsTableViewController#>))
-            //
-            //
-            
             preferences.synchronize()
         // TODO 4: same as above for switchGetNotification, dont forget to set the identifier on main.storyboard
             

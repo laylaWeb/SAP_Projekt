@@ -65,34 +65,6 @@ class TableViewController: UITableViewController {
     
     
     override func viewDidLoad() {
-
-//               //Mirvete und ich 1
-//                let preferences = UserDefaults.standard
-//                if (preferences.object(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY) != nil ) {
-//                    showInactiveOnly = preferences.bool(forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
-//
-//               appleServicesParser = AppleDataService(url:
-//               (string:"https://www.apple.com/support/systemstatus/")){
-//               [weak self] services in
-//
-//                        if (self != nil && self!.showInactiveOnly) {
-//                            self!.appleServices = services.filter {
-//                                service in
-//                                service.status !== "Available"
-//                            }
-//                        } else
-//
-//                            //17. ansonsten Liste komplett
-//                        {
-//                            self?.appleServices = services
-//                        }
-//                        self?.tableView.reloadData()
-//                    }
-//
-//        }
-//
-//                super.viewDidLoad()
-//     //-1
         Spinner.start(style: .white, backColor: UIColor.white, baseColor: UIColor.blue)
         
         showServices()
