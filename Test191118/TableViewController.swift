@@ -26,6 +26,7 @@ class TableViewController: UITableViewController {
     var awsServicesParser: AWSDataService!
     var dummyServicesParser: DummyDataService!
     var showInactiveOnly = false
+    var getNotification = false
     
     func appleCompletion() -> Promise<[Service]> { //code für switches nicht in die promises
         return Promise { seal in
@@ -122,7 +123,8 @@ class TableViewController: UITableViewController {
             }.done { dummyServices, awsServices in
                 self.dummyServices = dummyServices
                 self.awsServices = awsServices
-            self.filterIfNeeded()
+                self.filterIfNeeded()
+                self.notifIfNeeded()
             }.ensure {
                 Spinner.stop()
                 self.refresher.endRefreshing()
@@ -201,7 +203,23 @@ class TableViewController: UITableViewController {
                 service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
             }
         }
+        
     }
+    
+    
+    func notifIfNeeded(){
+        let preferences = UserDefaults.standard
+        if (preferences.object(forKey: SettingsTableViewController.PREF_GET_NOTIFICATION) != nil ) {
+            getNotification = preferences.bool(forKey: SettingsTableViewController.PREF_GET_NOTIFICATION)
+            sendNotif()
+        }
+    
+//        if(getNotification){
+//            sendNotif()
+//        }
+       
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
