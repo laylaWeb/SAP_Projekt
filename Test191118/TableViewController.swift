@@ -132,7 +132,6 @@ class TableViewController: UITableViewController {
                 Spinner.stop()
                 self.refresher.endRefreshing()
                 self.tableView.reloadData()
-                //self.sendNotif()
         }
     }
     
@@ -240,10 +239,6 @@ class TableViewController: UITableViewController {
                 sendNotif()
             }
         }
-    
-//        if(getNotification){
-//            sendNotif()
-//        }
        
     }
     
