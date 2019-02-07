@@ -30,35 +30,30 @@ class TableViewController: UITableViewController {
     var showInactiveOnly = false
     var getNotification = false
     
+    
     func appleCompletion() -> Promise<[Service]> {
         return Promise { seal in
-            
             appleServicesParser = AppleDataService(callbackHandler: { services in
                 seal.resolve(services, nil)
             })
-            
             appleServicesParser.getServices()
         }
     }
     
     func awsCompletion() -> Promise<[Service]> {
         return Promise { seal in
-            
             awsServicesParser = AWSDataService(callbackHandler: { services in
                 seal.resolve(services, nil)
             })
-            
             awsServicesParser.getServices()
         }
     }
     
     func dummyCompletion() -> Promise<[Service]> {
         return Promise { seal in
-            
             dummyServicesParser = DummyDataService(callbackHandler: { services in
                 seal.resolve(services, nil)
             })
-            
             dummyServicesParser.getServices()
         }
     }
@@ -108,31 +103,26 @@ class TableViewController: UITableViewController {
                 var numberOfDummyProblems = 0
                 
                 for service in awsServices {
-                    
                     if service.state == .Unavailable {
-                        
                         numberOfAWSProblems += 1
-                        
                     }
                 }
                 
                 for service in dummyServices {
-                    
                     if service.state == .Unavailable {
-                        
                         numberOfDummyProblems += 1
                     }
                 }
                 
                 var tempNumOfallProblems = numberOfAWSProblems + numberOfDummyProblems
                 self.totalNumberOfProblems = tempNumOfallProblems
+                
                 self.filterIfNeeded()
                 self.notifIfNeeded()
             }.ensure {
                 Spinner.stop()
                 self.refresher.endRefreshing()
                 self.tableView.reloadData()
-                self.sendNotif()
         }
     }
     
@@ -152,7 +142,7 @@ class TableViewController: UITableViewController {
         }
         else if section == 1 {
             return awsServices.count
-        } else if section == 2 {
+        }else if section == 2 {
             return dummyServices.count
         }
         return 0
@@ -169,20 +159,19 @@ class TableViewController: UITableViewController {
             
             if totalNumberOfProblems > 0 {
                 if totalNumberOfProblems == 1 {
-                    totalStatus = "ATTENTION! \(totalNumberOfProblems) detected error"
+                    totalStatus = "\(totalNumberOfProblems) service is not operating normally"
                 } else {
-                    totalStatus = "ATTENTION! \(totalNumberOfProblems) detected errors"
+                    totalStatus = "\(totalNumberOfProblems) services are not operating normally"
                 }
             } else {
-                totalStatus = "All Services operate normally"
+                totalStatus = "all services operate normally"
             }
             
             totalStatusService.name = totalStatus
+            totalStatusService.stateMessage = ""
             service = totalStatusService
             
-        }
-        
-        if (indexPath.section == 1) {
+        } else if (indexPath.section == 1) {
             service = awsServices[indexPath.row]
         } else if (indexPath.section == 2) {
             service = dummyServices[indexPath.row]
@@ -228,7 +217,6 @@ class TableViewController: UITableViewController {
                 service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
             }
         }
-        
     }
     
     
@@ -238,10 +226,6 @@ class TableViewController: UITableViewController {
             getNotification = preferences.bool(forKey: SettingsTableViewController.PREF_GET_NOTIFICATION)
             sendNotif()
         }
-    
-//        if(getNotification){
-//            sendNotif()
-//        }
        
     }
     
@@ -251,12 +235,14 @@ class TableViewController: UITableViewController {
         let indexPath = tableView.indexPathForSelectedRow
         if segue.identifier == "MySegueDetails" {
             if (indexPath?.section == 0) {
-                var service = self.awsServices[(indexPath?.item)!]
-                
+                var service = self.totalStatusService
                 let detailsViewController = segue.destination as! DetailsViewController
                 detailsViewController.service = service
-                
             } else if (indexPath?.section == 1) {
+                var service = self.awsServices[(indexPath?.item)!]
+                let detailsViewController = segue.destination as! DetailsViewController
+                detailsViewController.service = service
+            } else if (indexPath?.section == 2) {
                 var service = self.dummyServices[(indexPath?.item)!]
                 let detailsViewController = segue.destination as! DetailsViewController
                 detailsViewController.service = service
