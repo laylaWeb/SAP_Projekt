@@ -132,7 +132,7 @@ class TableViewController: UITableViewController {
                 Spinner.stop()
                 self.refresher.endRefreshing()
                 self.tableView.reloadData()
-                self.sendNotif()
+                //self.sendNotif()
         }
     }
     
@@ -236,7 +236,9 @@ class TableViewController: UITableViewController {
         let preferences = UserDefaults.standard
         if (preferences.object(forKey: SettingsTableViewController.PREF_GET_NOTIFICATION) != nil ) {
             getNotification = preferences.bool(forKey: SettingsTableViewController.PREF_GET_NOTIFICATION)
-            sendNotif()
+            if(preferences.bool(forKey: SettingsTableViewController.PREF_GET_NOTIFICATION)==true){
+                sendNotif()
+            }
         }
     
 //        if(getNotification){
