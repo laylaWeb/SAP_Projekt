@@ -10,19 +10,6 @@ import Foundation
 import UIKit
 import WebKit
 
-struct Service {
-    var name: String
-    var stateMessage: String
-    var state: ServiceState
-}
-
-enum ServiceState {
-    case Available
-    case Unavailable
-    case Maintenance
-    case Unknown
-}
-
 class Parser: NSObject, WKNavigationDelegate {
     
     private let url: URL

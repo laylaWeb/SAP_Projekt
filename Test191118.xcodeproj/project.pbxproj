@@ -19,11 +19,11 @@
 		AA36885D2200AB83007172ED /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36885C2200AB83007172ED /* Spinner.swift */; };
 		AA86DEED21C018890025D6DB /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA86DEEC21C018890025D6DB /* Parser.swift */; };
 		D7F857C6DB311216E25E48C4 /* Pods_Test191118.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE939B51E4C4F9F93CE94E /* Pods_Test191118.framework */; };
-		E40361502201B68C0003D8A6 /* MyTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E403614F2201B68C0003D8A6 /* MyTrigger.swift */; };
 		E428962621E4E31E002E3D62 /* MainDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E428962521E4E31E002E3D62 /* MainDataService.swift */; };
 		E428962821E4E3B4002E3D62 /* AWSDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E428962721E4E3B4002E3D62 /* AWSDataService.swift */; };
 		E428962C21E4FB23002E3D62 /* DummyDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E428962B21E4FB23002E3D62 /* DummyDataService.swift */; };
 		E49A493021F9FC9200435DE3 /* AppleDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A492F21F9FC9200435DE3 /* AppleDataService.swift */; };
+		E4D9BA44220C705700927E18 /* MyServiceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D9BA43220C705700927E18 /* MyServiceStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,13 +62,13 @@
 		AA36885C2200AB83007172ED /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		AA86DEEC21C018890025D6DB /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		C53D2387D016DC4BB58CCE5B /* Pods_Test191118Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test191118Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E403614F2201B68C0003D8A6 /* MyTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrigger.swift; sourceTree = "<group>"; };
 		E428962521E4E31E002E3D62 /* MainDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataService.swift; sourceTree = "<group>"; };
 		E428962721E4E3B4002E3D62 /* AWSDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSDataService.swift; sourceTree = "<group>"; };
 		E428962B21E4FB23002E3D62 /* DummyDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataService.swift; sourceTree = "<group>"; };
 		E43AB0C121E6A4680069712A /* Test191118Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43AB0C221E6A4680069712A /* Test191118UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test191118UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49A492F21F9FC9200435DE3 /* AppleDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleDataService.swift; sourceTree = "<group>"; };
+		E4D9BA43220C705700927E18 /* MyServiceStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServiceStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,13 +122,13 @@
 				2657E20B21A3456B00DFB872 /* LaunchScreen.storyboard */,
 				2657E20E21A3456B00DFB872 /* Info.plist */,
 				AA86DEEC21C018890025D6DB /* Parser.swift */,
+				E4D9BA43220C705700927E18 /* MyServiceStruct.swift */,
 				26A54EC821E4D43B0033C3EB /* Launch Screen.storyboard */,
 				E428962521E4E31E002E3D62 /* MainDataService.swift */,
 				E49A492F21F9FC9200435DE3 /* AppleDataService.swift */,
 				E428962721E4E3B4002E3D62 /* AWSDataService.swift */,
 				E428962B21E4FB23002E3D62 /* DummyDataService.swift */,
 				AA36885C2200AB83007172ED /* Spinner.swift */,
-				E403614F2201B68C0003D8A6 /* MyTrigger.swift */,
 			);
 			path = Test191118;
 			sourceTree = "<group>";
@@ -343,9 +343,9 @@
 				E428962821E4E3B4002E3D62 /* AWSDataService.swift in Sources */,
 				264B4F4E2200B17100757942 /* DetailsViewController.swift in Sources */,
 				AA86DEED21C018890025D6DB /* Parser.swift in Sources */,
-				E40361502201B68C0003D8A6 /* MyTrigger.swift in Sources */,
 				2657E20321A3456900DFB872 /* AppDelegate.swift in Sources */,
 				26ABAC0E21A43D4300C4E8C3 /* TableViewController.swift in Sources */,
+				E4D9BA44220C705700927E18 /* MyServiceStruct.swift in Sources */,
 				E49A493021F9FC9200435DE3 /* AppleDataService.swift in Sources */,
 				2694A7BE22048CC200D94CFD /* InfoViewController.swift in Sources */,
 				26ABAC1621AC84EC00C4E8C3 /* SettingsTableViewController.swift in Sources */,
