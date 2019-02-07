@@ -29,17 +29,15 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW4-nG-ekL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW4-nG-ekL">
                                         <rect key="frame" x="8" y="42" width="352" height="101.5"/>
-                                        <string key="text">With this application you can track the status of specific Apple and Amazon Webservices. You can also add and manage your favourite webservices and receive notification when a server is disruptive or in maintenance.</string>
+                                        <string key="text">With this application you can track the status of specific Apple and Amazon Web Services. You can also add and manage your favourite webservices and receive notification when a server is disruptive or in maintenance.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbq-Ic-PMa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="© Marianne Bähne, Sarah Kraus, Sophie Kuna, Lan Anh Phan, Mirvete Rexha, Hai Trang Vu Thi, Jennifer Zander" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbq-Ic-PMa">
                                         <rect key="frame" x="8" y="548" width="359" height="47"/>
-                                        <string key="text">© Marianne Bähne, Sarah Kraus, Sophie Kuna,
-Lan Anh Phan, Mirvete Rexha, Hai Trang Vu Thi, Jennifer Zander</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -60,6 +58,7 @@ Lan Anh Phan, Mirvete Rexha, Hai Trang Vu Thi, Jennifer Zander</string>
                                     <constraint firstAttribute="trailing" secondItem="Jbq-Ic-PMa" secondAttribute="trailing" constant="8" id="kHN-av-E9o"/>
                                     <constraint firstAttribute="trailing" secondItem="hxE-gd-Wy1" secondAttribute="trailing" constant="223" id="lCF-bG-k3S"/>
                                     <constraint firstAttribute="trailing" secondItem="Jbq-Ic-PMa" secondAttribute="trailing" constant="8" id="lRB-bX-xEk"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jbq-Ic-PMa" secondAttribute="bottom" constant="2" id="oJH-4G-d0k"/>
                                     <constraint firstItem="bW4-nG-ekL" firstAttribute="leading" secondItem="W6u-Te-NzA" secondAttribute="leading" constant="8" id="ve3-4Y-1uc"/>
                                 </constraints>
                             </view>
