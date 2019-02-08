@@ -85,23 +85,16 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
   
     @objc func onSwitchChanged(mySwitch: UISwitch) {
         
-        
-       
         let value = mySwitch.isOn
         let preferences = UserDefaults.standard
         
-       
-     
         switch mySwitch.accessibilityIdentifier {
         case "switchInactiveOnly":
             preferences.set(value, forKey: SettingsTableViewController.PREF_INACTIVE_ONLY)
             preferences.synchronize()
-       
         case "switchGetNotification":
             preferences.set(value, forKey: SettingsTableViewController.PREF_GET_NOTIFICATION)
             preferences.synchronize()
-            
-            
         default:
             print("Identifiert not found")
         }
@@ -151,16 +144,6 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
        return cell
     }
     
-    //override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    //{
-        //return 40.0;//Choose your custom row height
-    //    if indexPath.section == StatusReportLabelCell {
-    //        return 60
-    //    } else {
-    //        return UITableView.automaticDimension
-    //    }
-    //}
-    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         if indexPath.section == 1
         {
@@ -169,65 +152,7 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
                 return 30.0
             }
         }
-        
         return 200.0
     }
-    
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 

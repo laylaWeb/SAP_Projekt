@@ -69,12 +69,36 @@ class TableViewController: UITableViewController {
         let statusChangedNotifCategory = UNNotificationCategory(identifier: "statusChangedNotification", actions: [], intentIdentifiers: [], options: [])
         UNUserNotificationCenter.current().setNotificationCategories([statusChangedNotifCategory])
         
+        refresh()
+    }
+    
+    @objc func showServices() {
+        firstly {
+            when(fulfilled: dummyCompletion(), awsCompletion())
+            }.done { dummyServices, awsServices in
+                self.dummyServices = dummyServices
+                self.awsServices = awsServices
+                
+                let numberOfAWSProblems = awsServices.filter { (service) in service.state == .Unavailable }.count
+                let numberOfDummyProblems = dummyServices.filter { (service) in service.state == .Unavailable }.count
+                
+                self.totalNumberOfProblems = numberOfAWSProblems + numberOfDummyProblems
+                
+                self.filterIfNeeded()
+                self.notifIfNeeded()
+            }.ensure {
+                Spinner.stop()
+                self.refresher.endRefreshing()
+                self.tableView.reloadData()
+        }
+    }
+    
+    func refresh() {
         refresher = UIRefreshControl()
         tableView.addSubview(refresher)
         refresher.attributedTitle = NSAttributedString(string: "refreshing")
         refresher.tintColor = UIColor.blue
         refresher.addTarget(self, action: #selector(showServices), for: .valueChanged)
-        
     }
     
     func sendNotif() {
@@ -89,40 +113,6 @@ class TableViewController: UITableViewController {
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
             let request = UNNotificationRequest(identifier: "StatusChange", content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        }
-    }
-    
-    @objc func showServices() {
-        firstly {
-            when(fulfilled: dummyCompletion(), awsCompletion())
-            }.done { dummyServices, awsServices in
-                self.dummyServices = dummyServices
-                self.awsServices = awsServices
-                
-                var numberOfAWSProblems = 0
-                var numberOfDummyProblems = 0
-                
-                for service in awsServices {
-                    if service.state == .Unavailable {
-                        numberOfAWSProblems += 1
-                    }
-                }
-                
-                for service in dummyServices {
-                    if service.state == .Unavailable {
-                        numberOfDummyProblems += 1
-                    }
-                }
-                
-                var tempNumOfallProblems = numberOfAWSProblems + numberOfDummyProblems
-                self.totalNumberOfProblems = tempNumOfallProblems
-                
-                self.filterIfNeeded()
-                self.notifIfNeeded()
-            }.ensure {
-                Spinner.stop()
-                self.refresher.endRefreshing()
-                self.tableView.reloadData()
         }
     }
     
@@ -154,23 +144,25 @@ class TableViewController: UITableViewController {
         
         var service: Service?
         var totalStatus = ""
+        var state = service?.state
         
         if (indexPath.section == 0) {
-            
             if totalNumberOfProblems > 0 {
                 if totalNumberOfProblems == 1 {
-                    totalStatus = "\(totalNumberOfProblems) service is not operating normally"
+                    totalStatus = "\(totalNumberOfProblems) service is disrupted"
+                    state = ServiceState.Unavailable
                 } else {
-                    totalStatus = "\(totalNumberOfProblems) services are not operating normally"
+                    totalStatus = "\(totalNumberOfProblems) services are disrupted"
+                    state = ServiceState.Unavailable
                 }
             } else {
                 totalStatus = "all services operate normally"
+                state = ServiceState.Available
             }
-            
             totalStatusService.name = totalStatus
-            totalStatusService.stateMessage = ""
+            totalStatusService.state = state!
+            totalStatusService.stateMessage = "check the list for more information"
             service = totalStatusService
-            
         } else if (indexPath.section == 1) {
             service = awsServices[indexPath.row]
         } else if (indexPath.section == 2) {
@@ -189,9 +181,6 @@ class TableViewController: UITableViewController {
         else if(service!.state == ServiceState.Maintenance) {
             cell.imageView?.image = UIImage(named: "blau2")
         }
-
-        //super.viewDidLoad()
-
         return cell
     }
  
@@ -208,11 +197,9 @@ class TableViewController: UITableViewController {
             appleServices = appleServices.filter{
                 service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
             }
-            
             awsServices = awsServices.filter {
                 service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
             }
-            
             dummyServices = dummyServices.filter {
                 service in service.state == ServiceState.Unavailable || service.state == ServiceState.Maintenance
             }
@@ -228,7 +215,6 @@ class TableViewController: UITableViewController {
                 sendNotif()
             }
         }
-       
     }
     
     
@@ -237,15 +223,15 @@ class TableViewController: UITableViewController {
         let indexPath = tableView.indexPathForSelectedRow
         if segue.identifier == "MySegueDetails" {
             if (indexPath?.section == 0) {
-                var service = self.totalStatusService
+                let service = self.totalStatusService
                 let detailsViewController = segue.destination as! DetailsViewController
                 detailsViewController.service = service
             } else if (indexPath?.section == 1) {
-                var service = self.awsServices[(indexPath?.item)!]
+                let service = self.awsServices[(indexPath?.item)!]
                 let detailsViewController = segue.destination as! DetailsViewController
                 detailsViewController.service = service
             } else if (indexPath?.section == 2) {
-                var service = self.dummyServices[(indexPath?.item)!]
+                let service = self.dummyServices[(indexPath?.item)!]
                 let detailsViewController = segue.destination as! DetailsViewController
                 detailsViewController.service = service
             }
