@@ -20,11 +20,16 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         nameLabel?.text = service?.name
         
+        
+        
         if (service?.name.contains("AWS"))! {
             detailsLabel?.text = service?.stateMessage
         }
         else if (service?.name.contains("Amazon"))! {
             detailsLabel?.text = service?.stateMessage
+        }
+        else if (service?.name.contains("disrupted"))! {
+            detailsLabel?.text = "Please check the list in the mainview for disrupted services. You can also set your filter to show only interrupted services."
         }
         else if service?.state == ServiceState.Available {
             detailsLabel?.text = "Everything is operating normally."
@@ -35,21 +40,6 @@ class DetailsViewController: UIViewController {
         else if service?.state == ServiceState.Unavailable {
             detailsLabel?.text = "Service is disrupted. Please check again later."
         }
-        
-
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
