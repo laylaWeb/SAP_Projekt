@@ -28,7 +28,7 @@ class SettingsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     static let PREF_GET_NOTIFICATION = "getNotification"
     
-    let headlines2 = ["Add & Manage Webservers"]
+    let headlines2 = [""]
     let status2 = [[" "]]
 
     override func viewDidLoad() {
