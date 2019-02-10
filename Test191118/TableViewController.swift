@@ -107,7 +107,7 @@ class TableViewController: UITableViewController {
             guard settings.authorizationStatus == .authorized else { return }
             
             let content = UNMutableNotificationContent()
-            content.body = "Status Changed!"
+            content.body = "Service Status Changed!"
             content.categoryIdentifier = "statusChangedNotification"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)

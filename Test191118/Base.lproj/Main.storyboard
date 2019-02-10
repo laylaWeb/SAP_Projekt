@@ -30,14 +30,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW4-nG-ekL">
-                                        <rect key="frame" x="8" y="42" width="352" height="101.5"/>
-                                        <string key="text">With this application you can track the status of specific Apple and Amazon Web Services. You can also set your filter to show only interrupted services and receive notification when a server is disrupted or in maintenance.</string>
+                                        <rect key="frame" x="8" y="42" width="352" height="142.5"/>
+                                        <mutableString key="text">With this application you can track the status of specific Apple and Amazon Web Services. You can also set your filter to show only interrupted services and receive notification when a server is disrupted or in maintenance. A detailed status report is shown when clicked on the particular service.</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="© Marianne Bähne, Sarah Kraus, Sophie Kuna, Lan Anh Phan, Mirvete Rexha, Hai Trang Vu Thi, Jennifer Zander" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbq-Ic-PMa">
-                                        <rect key="frame" x="8" y="548" width="359" height="47"/>
+                                        <rect key="frame" x="8" y="546" width="359" height="49"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -47,10 +47,10 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bW4-nG-ekL" secondAttribute="trailing" constant="15" id="1Ow-bY-qic"/>
                                     <constraint firstItem="bW4-nG-ekL" firstAttribute="top" secondItem="hxE-gd-Wy1" secondAttribute="bottom" constant="8" id="2Ac-xL-MQn"/>
+                                    <constraint firstItem="Jbq-Ic-PMa" firstAttribute="top" secondItem="bW4-nG-ekL" secondAttribute="bottom" constant="361.5" id="9bm-bj-hsr"/>
                                     <constraint firstItem="bW4-nG-ekL" firstAttribute="top" secondItem="hxE-gd-Wy1" secondAttribute="bottom" constant="8" id="DYU-fB-Zyo"/>
                                     <constraint firstAttribute="bottom" secondItem="Jbq-Ic-PMa" secondAttribute="bottom" constant="8" id="FjE-YJ-2R9"/>
                                     <constraint firstAttribute="bottom" secondItem="Jbq-Ic-PMa" secondAttribute="bottom" constant="8" id="PbT-PL-yJd"/>
-                                    <constraint firstItem="Jbq-Ic-PMa" firstAttribute="top" secondItem="bW4-nG-ekL" secondAttribute="bottom" constant="404.5" id="XvX-wR-X4l"/>
                                     <constraint firstItem="hxE-gd-Wy1" firstAttribute="top" secondItem="W6u-Te-NzA" secondAttribute="top" constant="8" id="azR-AQ-DdN"/>
                                     <constraint firstItem="Jbq-Ic-PMa" firstAttribute="leading" secondItem="W6u-Te-NzA" secondAttribute="leading" constant="8" id="cVa-3M-ubm"/>
                                     <constraint firstItem="hxE-gd-Wy1" firstAttribute="leading" secondItem="W6u-Te-NzA" secondAttribute="leading" constant="8" id="fpQ-5I-X8d"/>
@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mli-Mx-IOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-554.39999999999998" y="-1217.5412293853074"/>
+            <point key="canvasLocation" x="-554.39999999999998" y="-1340.7796101949027"/>
         </scene>
         <!--Cloud Services Watcher-->
         <scene sceneID="kx4-iq-OGf">
@@ -282,16 +282,19 @@
                                                 <rect key="frame" x="0.0" y="137" width="343" height="63"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zbd-Oz-4ow">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="31.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTs-Uh-lpI">
-                                                                <rect key="frame" x="0.0" y="0.0" width="288" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="288" height="31.5"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="31.5" id="c2h-3i-DSD"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2tu-tZ-SCe">
-                                                                <rect key="frame" x="293" y="0.0" width="52" height="21"/>
+                                                                <rect key="frame" x="293" y="0.0" width="52" height="31.5"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="switchGetNotification"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="buG-PT-tyd"/>
@@ -300,16 +303,16 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GaZ-qE-Fni">
-                                                        <rect key="frame" x="0.0" y="21" width="343" height="42"/>
+                                                        <rect key="frame" x="0.0" y="31.5" width="343" height="31.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When this is on, push notification about inactive server will be shown." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztI-ug-9A2">
-                                                                <rect key="frame" x="0.0" y="0.0" width="288" height="42"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="288" height="31.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaH-Zi-bC7">
-                                                                <rect key="frame" x="293" y="0.0" width="50" height="42"/>
+                                                                <rect key="frame" x="293" y="0.0" width="50" height="31.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="Iiv-Yc-5mP"/>
                                                                 </constraints>
@@ -325,9 +328,6 @@
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="GaZ-qE-Fni" firstAttribute="top" secondItem="2wf-ef-fGj" secondAttribute="top" constant="21" id="PVy-X7-5Dr"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
@@ -352,32 +352,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OEk-Zt-aaC" id="8gA-0O-sCs">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="insert URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SBT-86-KAY">
-                                                    <rect key="frame" x="15" y="6" width="307" height="30"/>
-                                                    <accessibility key="accessibilityConfiguration" identifier="urlEditText"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" returnKeyType="done"/>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk1-m4-SG6">
-                                                    <rect key="frame" x="330" y="7" width="30" height="30"/>
-                                                    <accessibility key="accessibilityConfiguration" identifier="addButton"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="Yk1-m4-SG6" secondAttribute="height" multiplier="1:1" id="1cf-Yv-B42"/>
-                                                    </constraints>
-                                                    <state key="normal" title="+">
-                                                        <color key="titleColor" red="0.21249557520000001" green="0.69251943010000006" blue="0.4932295384" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </state>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Yk1-m4-SG6" secondAttribute="trailing" constant="15" id="3Wb-l5-28J"/>
-                                                <constraint firstItem="Yk1-m4-SG6" firstAttribute="centerY" secondItem="8gA-0O-sCs" secondAttribute="centerY" id="HOj-Nk-rEl"/>
-                                                <constraint firstItem="SBT-86-KAY" firstAttribute="leading" secondItem="8gA-0O-sCs" secondAttribute="leading" constant="15" id="T4o-FW-457"/>
-                                                <constraint firstItem="Yk1-m4-SG6" firstAttribute="leading" secondItem="SBT-86-KAY" secondAttribute="trailing" constant="8" id="wcj-iO-BEd"/>
-                                                <constraint firstItem="SBT-86-KAY" firstAttribute="centerY" secondItem="8gA-0O-sCs" secondAttribute="centerY" id="y9K-Z1-vwD"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
