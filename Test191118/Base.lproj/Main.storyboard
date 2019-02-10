@@ -30,14 +30,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW4-nG-ekL">
-                                        <rect key="frame" x="8" y="42" width="352" height="101.5"/>
-                                        <string key="text">With this application you can track the status of specific Apple and Amazon Web Services. You can also set your filter to show only interrupted services and receive notification when a server is disrupted or in maintenance.</string>
+                                        <rect key="frame" x="8" y="42" width="352" height="142.5"/>
+                                        <mutableString key="text">With this application you can track the status of specific Apple and Amazon Web Services. You can also set your filter to show only interrupted services and receive notification when a server is disrupted or in maintenance. A detailed status report is shown when clicked on the particular service.</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="© Marianne Bähne, Sarah Kraus, Sophie Kuna, Lan Anh Phan, Mirvete Rexha, Hai Trang Vu Thi, Jennifer Zander" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbq-Ic-PMa">
-                                        <rect key="frame" x="8" y="548" width="359" height="47"/>
+                                        <rect key="frame" x="8" y="546" width="359" height="49"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -47,10 +47,10 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bW4-nG-ekL" secondAttribute="trailing" constant="15" id="1Ow-bY-qic"/>
                                     <constraint firstItem="bW4-nG-ekL" firstAttribute="top" secondItem="hxE-gd-Wy1" secondAttribute="bottom" constant="8" id="2Ac-xL-MQn"/>
+                                    <constraint firstItem="Jbq-Ic-PMa" firstAttribute="top" secondItem="bW4-nG-ekL" secondAttribute="bottom" constant="361.5" id="9bm-bj-hsr"/>
                                     <constraint firstItem="bW4-nG-ekL" firstAttribute="top" secondItem="hxE-gd-Wy1" secondAttribute="bottom" constant="8" id="DYU-fB-Zyo"/>
                                     <constraint firstAttribute="bottom" secondItem="Jbq-Ic-PMa" secondAttribute="bottom" constant="8" id="FjE-YJ-2R9"/>
                                     <constraint firstAttribute="bottom" secondItem="Jbq-Ic-PMa" secondAttribute="bottom" constant="8" id="PbT-PL-yJd"/>
-                                    <constraint firstItem="Jbq-Ic-PMa" firstAttribute="top" secondItem="bW4-nG-ekL" secondAttribute="bottom" constant="404.5" id="XvX-wR-X4l"/>
                                     <constraint firstItem="hxE-gd-Wy1" firstAttribute="top" secondItem="W6u-Te-NzA" secondAttribute="top" constant="8" id="azR-AQ-DdN"/>
                                     <constraint firstItem="Jbq-Ic-PMa" firstAttribute="leading" secondItem="W6u-Te-NzA" secondAttribute="leading" constant="8" id="cVa-3M-ubm"/>
                                     <constraint firstItem="hxE-gd-Wy1" firstAttribute="leading" secondItem="W6u-Te-NzA" secondAttribute="leading" constant="8" id="fpQ-5I-X8d"/>
@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mli-Mx-IOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-639" y="-682"/>
+            <point key="canvasLocation" x="-554.39999999999998" y="-1340.7796101949027"/>
         </scene>
         <!--Cloud Services Watcher-->
         <scene sceneID="kx4-iq-OGf">
